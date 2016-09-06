@@ -1,0 +1,15 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname quadaric) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(check-expect (what-kind "foo" 1 1) -1)
+(check-expect (what-kind +inf.0 1 1) -1)
+(check-expect (what-kind 1 true 1) -1)
+(check-expect (what-kind 1 +inf.0 1) -1)
+(check-expect (what-kind 1 1 make-posn(1 1)) -1)
+(check-expect (what-kind 1 1 -inf.0) -1)
+(define (what-kind a b c)
+  (if (and (rational? a) (rational? b) (rational c))
+      (if (a = 0) 'degenerate
+          (if (< (-(* b b)(* (* 4 a) c)) 0)) 'none
+               (if (= (-(* b b)(* (* 4 a) c)) 0) ) 'one
+                   (if (< (-(* b b)(* (* 4 a) c)) 0)) 'two -1)-1))

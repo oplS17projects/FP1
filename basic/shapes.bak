@@ -1,0 +1,26 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname shapes) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define-struct circle (center raduis))
+
+(define-struct square (upper-left length))
+
+(define-struct rect (upper-left width length))
+
+(check-expect (area -1) -1)
+(check-expect (area "foo") -1)
+(check-expect (area true) -1)
+
+(define (area shape)
+  (if (circle? shape)
+      (if (and (rational? (circle-center shape)) (rational? (circle-raduis shape)))
+           (if (< (circle-raduis shape) 0)
+              2 -1)-1)      
+  (if (square? shape)
+      (if (and (rational? (square-upper-left shape)) (rational? (square-length shape)))
+           (if (< (square-length shape) 0)
+              2 -1)-1)  
+  (if (rect? shape)
+      (if (and (rational? (rect-upper-left shape)) (rational? (rect-length shape)) (rational? (rect-width shape)))
+           (if (< (square-length shape) 0)
+              2 -1)-1)-1))))

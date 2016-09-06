@@ -14,8 +14,6 @@
 (check-within (area-cylinder true 4) -1 0)
 (check-within (area-cylinder 1 0) -1 0)
 (check-within (area-cylinder 0 1) -1 0)
-(check-within (area-cylinder 1 -1) -1 0)
-(check-within (area-cylinder -1 1) -1 0)
 
 
 (define(area-cylinder base-radius height)
