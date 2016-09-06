@@ -1,0 +1,2 @@
+racket main.rkt > actual.txt
+diff -u actual.txt output.txt 
