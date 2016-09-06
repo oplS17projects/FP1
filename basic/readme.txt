@@ -1,6 +1,6 @@
 Sum coins:
 
-        Overview - takes 4 inputs pennies nickels dimes and quaters and returns the total -1 is reuturned for invaild input becuase you can't have a negitive coin sum
+	Overview - takes 4 inputs pennies nickels dimes and quaters and returns the total -1 is reuturned for invaild input becuase you can't have a negitive coin sum
 
 
 	Case 1 - negitivte coins: If any of the coins are negitive -1 is reuturned to singal invalid input, this is acomplished by using both if and and
@@ -23,7 +23,7 @@ Sum coins:
                  and 3+2i. Again the interger? function was able to hadle this well. Both of them returned -1 as the 
 
         Case 5 - correct input: if the input is correct then the function takes the pennies * .01, the nickels * .05, the dimes * .1, the quaters *.25 and adds them all up.
-                 I wrote 4 test cases for this ( 0 0 0 0 = 0  ), (10 7 3 1 = 1), (1 1 1 1 = .41), and to test the maxium value
+                 I wrote 4 test cases for this ( 0 0 0 0 = 0 ), (10 7 3 1 = 1), (1 1 1 1 = .41), and to test the maxium value
                  (10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 0 0 0 = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
                  even though this sitution is highly unlikey it is still theoriclaty possible and all the tests pased
                  
@@ -98,7 +98,61 @@ what-kind:
                   The forumla used is part of the quardaric forumla that has been proven true. for this I used the tests (1 2 0 'two), (1 4 4 'one), (1 4 5 'none), (0 -1 2.3 'degenerate), (1 0 -5 'two) 
                   I verifyed these sultions all using a calulator. All of these tests passed.     
                     
-                  
+ 
+Timedif:
+       
+	I created 15 tests to test the functionalty of My code. My Program takes return -1 for invalid input. All return values
+        return the abs differnce bettween the time. The first 8 tests have invalid input. the first two of these where tested
+        by passing objects that weren't time objects 1, and "foo". To make these tests pass I used an if and statment with two swicthes
+        using time? for both inputs. For the next 6 inputs. I created tests for invalid values within the time struct. for
+        these inputs (make-time 1 1 "foo") (make-time 1 1 1), (make-time 3 3 3) (make-time 1 1 -1), (make-time 3.2 3 3) (make-time 1 1 1),
+        (make-time 3 +inf.0 3) (make-time 1 1 1), (make-time 24 0 0) (make-time 1 1 1), (make-time 23 59 60) (make-time 1 1 1),
+        (make-time 23 59 0) (make-time 1 60 59). the values for time can only be postive intergers from (make-time 0 0 0) 
+        representing midnight from (make-time 23 59 59) reprensenting one second before midnight. Time can't have negitive values
+        or have decimals in my impelemenation. hours can be 0 to 23. mintues and seconds can be 0 to 59. For these cases I wrote 4
+        tests. Using (make-time hours mintues seconds) and passing invalid values into these parameters. These values where 
+        "foo", -1, 3.2, and +inf.0. To check these I used the interger? function for time-hours, time-mintues, time-seconds
+        for both inputs. All these tests passed. Next I wrote tests for bondary cases. These tests included (make-time 24 0 0),
+        (make-time 23 59 60), and (make-time 23 59 0). I checked the boundaries of these to make sure hours was greater than or equal to
+        zero but less than 24. Also that hours and seconds where greater than or equal to zero but less than 60. These tests
+        all passed. Finally I wrote 7 tests to check for valid input. I used the formula (hours * 60^2) + (mintues * 60) + seconds to create
+        these various test on a calulator. I tested these with varouis tests and all these passed. 
+
+area:
+
+        My program is right becuase I wrote 11 test cases that all passed:
+        (check-within (area (make-circle (make-posn 0 0) 0)) 0 .01)
+	(check-within (area (make-circle (make-posn 0 0) 1)) 3.14 .01)
+	(check-within (area (make-circle (make-posn 0 0) 5.5)) 95.03 .01)
+	(check-within (area (make-circle (make-posn 0 0) 10)) 314.16 .01)
+	(check-expect (area (make-square (make-posn 0 0) 0)) 0)
+	(check-expect (area (make-square (make-posn 0 0) 1)) 1)
+	(check-expect (area (make-square (make-posn 0 0) 3)) 9)
+	(check-within (area (make-square (make-posn 0 0) 20.1)) 404.01 .01)
+	(check-expect (area (make-rect (make-posn 0 0) 1 1)) 1)
+	(check-expect (area (make-rect (make-posn 0 0) 3 11)) 33)
+	(check-expect (area (make-rect (make-posn 0 0) 20.1 10)) 201)
+
+        These test cases are all good becuase they I used the respective forumlas for each of these shapes on a calulator.
+        I used 3 to 4 tests for each shape. with whole and decimal numbers. Rectangles can't have zero for length of width
+        becuase if only 0 is zero it becomes a line.
+
+translate-shape:
+
+        See my last 9 unit tests for this for this all of them passed. These test case consider all the possible shapes passed to the function. These tests
+        also consider different translations from anywhere from postive to negitive axis, as well a decimal input. I easily created these tests by whatever input
+        I created I in my head subtracted or added the delta from the posn-x from the output. 
+
+in shape:
+
+         See the last 26 tests that I for the function. I made 8 differrent test cases to show that each shape wass accounted for. For the square and
+         rectangle I made 4 tests for each border edge of the the shape to verfiy each was in the shape. Then I checked for 4 points outside the shape.
+         for the circle I tester 4 border ponits on the edge of the circle. Then two more points just inside the circle and 2 more points just outside the circle.
+         All thhese tests passed. For the circle I used a^2+b^2=c^2 when writing these tests to see if it was in shape or not. For the rectangle and square I
+         could easily tell just by looking at it.
+         
+
+                 
                   
 
           

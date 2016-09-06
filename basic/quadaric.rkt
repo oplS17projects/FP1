@@ -6,11 +6,11 @@
 ;;-1 is returned is there was invalid input
 
 (check-expect (what-kind "foo" 1 1) -1)
+(check-expect (what-kind +inf.0 1 1) -1)
 (check-expect (what-kind 1 true 1) -1)
 (check-expect (what-kind 1 +inf.0 1) -1)
 (check-expect (what-kind 1 1 (make-posn 1 1)) -1)
 (check-expect (what-kind 1 1 -inf.0) -1)
-(check-expect (what-kind 1 1 2+3i) -1)
 (check-expect (what-kind 0 1 1) 'degenerate)
 (check-expect (what-kind 1 0 1) 'none)
 (check-expect (what-kind 1 -2 1) 'one)
