@@ -76,11 +76,28 @@ netpay:
                   0 to 8784 inclusive. You can not work negitive hours and owe the company money. You can work 0 hours a.k.a. unemployed. there are 8784 hours
                   in a leap year 266(days)*24(hours). So in theory excluding any labor laws, you can work that many hours. all net pay are demtirimed on a yearly
                   basis I am assuming this is for the U.S.A. Decimals are also possible as you can work 2 hours and 30 mintues (2.5). I wrote 5 tests to check this 
-                  functionality using values +inf.0, 2+3i, true, -1, 8784.01. All of these values returned -1 as stated above why these values are incorrect.
+                  functionality using values +inf.0, 2+3i, true, -1, 8784.01. I used the rational?, greater than or equal to 0, and less than 8784 as swicthes
+                  to test All of these values returned -1 as stated above why these values are incorrect.
         
          case 2 - valid input: if the input is valid, the input is then multiplied by 12. Next, the tax of that amount (calulated using the tax function) this then subtracted from the gross
                   pay to get the net pay amount that is returned. I tested 4 cases for this (0 0), (19.9 238.8), (20 240), (21 214.2), (netpay 8784.00 75893.76). The margin of error I used 
                   was .01. I used this becuase money is rounded to two decimal places to account for rounding. All of these tests passed
+
+
+what-kind:
+        
+         overview - takes in 3 interger coifiecents a,b, and c as respented in the quadaric forumula. Then returns the number of sultions to the equation:
+                    ethier 'one, 'two, 'nine, or 'degenerate detimined by the forumla: delta = (b)^2 - 4ac. -1 is reutrned if there is any invalid input
+
+         case 1 - invalid input: anything that is not a rational number from -inf.0 to +inf.0. It is my desgin choice that this function does not take imginary number as coifecints as
+                  the function contract states 'none is one of the output when 'none could have imaginary solutions. I made 7 tests for this case. with inputs: "foo",true,+inf.0, 
+                  (make-posn 1 1), -inf.0 2+3i. I tested all with 3 rational? swicthes for each input. all of these returned -1 and passed the tests.
+
+         case 2 - valid input: if the input is valid, a seris of if statements determime the output. a = 0 then the ouput is 'degenerate. for the rest the equation delta = (b)^2 - 4ac was 
+                  used. If detla < 0 then the equation has no sultions. If detla = 0 then the equation has one sultions. If detla > 0 then the equation has two sultions.
+                  The forumla used is part of the quardaric forumla that has been proven true. for this I used the tests (1 2 0 'two), (1 4 4 'one), (1 4 5 'none), (0 -1 2.3 'degenerate), (1 0 -5 'two) 
+                  I verifyed these sultions all using a calulator. All of these tests passed.     
+                    
                   
                   
 
