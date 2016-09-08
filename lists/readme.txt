@@ -5,6 +5,7 @@ check-temps1:
 	Refer to the test cases. I wrote 9 test cases for this function. The
 	first were emtpy lists that both returned false. Then I checked the 
 	lower bond of 5 and got true. Then I checked all numbers within 
+<<<<<<< HEAD
     that range and got  true. Next I checked the upper bound 95 and got
     ture. Then I tried 4 as one of the arugements and got false. Next 
     I tried 97 as one of the arugments and got false. Then I tried 
@@ -18,6 +19,21 @@ check-temps:
 	boundires with 5 as low and 15 as max, and it passed. The next two 
 	cases checked values within the given low and high and both passed.
     The next two I repeated a test case with one boundry and another for 
+=======
+        that range and got  true. Next I checked the upper bound 95 and got
+        ture. Then I tried 4 as one of the arugements and got false. Next 
+        I tried 97 as one of the arugments and got false. Then I tried 
+        zero as one of arugements and got false. Finaly I tried 100 as 
+       one of the arugements and got false.
+
+check-temps:
+
+        Refer to the test cases. The first two test cases are for checking to 
+        see if empty lists reutrn false which they do. The next test both 
+	boundires with 5 as low and 15 as max, and it passed. The next two 
+	cases checked values within the given low and high and both passed.
+        The next two I repeated a test case with one boundry and another for 
+>>>>>>> cc1a173cac2d0fcf49c5dfafe88ae7dff1b2ff6f
 	all within and both passed. I then made four tests for numbers outside 
 	the range and all four passed. next I made a three tests cases for 
 	low > high these all reutrned 'error as the low tempurature can't 
@@ -31,7 +47,11 @@ check-temps:
 
 Convert:
  
+<<<<<<< HEAD
     Refer to the test cases The first test case passed and empty list
+=======
+        Refer to the test cases The first test case passed and empty list
+>>>>>>> cc1a173cac2d0fcf49c5dfafe88ae7dff1b2ff6f
 	and returned 0. The next two test checked lists with only one item 
 	2 and 5 respectivly and reutrn 2 and 5. Next I checked lists that 
 	contained 2 items. these lists contained 2,1 and 1,2. both of 
@@ -42,7 +62,11 @@ Convert:
 
 average-price:
 
+<<<<<<< HEAD
     Refer to the test cases. I wrote 4 tests for this assigment. 
+=======
+        Refer to the test cases. I wrote 4 tests for this assigment. 
+>>>>>>> cc1a173cac2d0fcf49c5dfafe88ae7dff1b2ff6f
 	The first test was a test of any empty list that returned 0. 
 	As nothing was in it so it cots nothing. The next was with 
 	a list of 3 items that contained (2,2,2). This test passed 
@@ -66,6 +90,7 @@ convertFC:
 eliminate-exp:
 
 	I wrote 6 tests for this functions. The first test tested an
+<<<<<<< HEAD
     empty list that returned passed by returning an empty list.
 	The next two tests tested had two lists that contained the
     element 1 and 10, the ua was 5 and both cases. The first case
@@ -74,10 +99,21 @@ eliminate-exp:
     and (0 ,12) as the list. The test passed by returning (0). The
     final test had ua = 10 and (0,12,8) as the list. The test passed
     by returning the list of (0,8)
+=======
+        empty list that returned passed by returning an empty list.
+	The next two tests tested had two lists that contained the
+        element 1 and 10, the ua was 5 and both cases. The first case
+        passed by returning a list of containing 1. The next case 
+	passed by returning an empty list. The next test contained ua = 10
+        and (0 ,12) as the list. The test passed by returning (0). The
+        final test had ua = 10 and (0,12,8) as the list. The test passed
+        by returning the list of (0,8)
+>>>>>>> cc1a173cac2d0fcf49c5dfafe88ae7dff1b2ff6f
 
 suffixes: 
 
 	Please see the tests for these functions. I used 4 tests to
+<<<<<<< HEAD
     check this this. I Worte 4 tests for this case. I used simalar
     test cases to what was on the assigment page. One of the tests
 	was the test on the assigment page ('a,'b,'c,'d). The test passed.
@@ -106,4 +142,29 @@ count-persons:
     just kept adding a mother/father to each person for 
 	each test so I knew the result would be one more than 
 	the pervious test.
+=======
+        check this this. I Worte 4 tests for this case. I used simalar
+        test cases to what was on the assigment page. One of the tests
+	was the test on the assigment page ('a,'b,'c,'d). The test passed.
+        I also used an empty list that return a list that contained an 
+        empty list. One of the tests pased in ('a) and returned (list (list a') empty)
+        The last test passed in (a',b',c',d',e') and returned the output expcted
+        as defined by your example.
+
+average-age:
+
+	Please see the tests for these functions. My test cases for these covered 
+	the 4 cases of what the current node is: leaf, left branch, right brnach, 
+        and node with a left and right branch. All code paths were covered at least twice.
+        I know the output is right becuase every person I passed had an age of 22. 
+
+count-persons:
+
+	Plese see the tests for the functions. 7 test cases where written for this
+        function. As disriced in average-age I tested all 4 cases for this function
+        and all code path in this function were covered at least once. I know these
+        test were good becuase when I wrote these tests I started with one person and
+        just kept adding a mother/father to each person for each test so I knew the
+        result would be one more than the pervious test.
+>>>>>>> cc1a173cac2d0fcf49c5dfafe88ae7dff1b2ff6f
 
