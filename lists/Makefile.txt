@@ -1,0 +1,5 @@
+all: actual.txt
+ diff -u actual.txt output.txt
+
+actual.txt: main.rkt
+ racket main.rkt > actual.txt 

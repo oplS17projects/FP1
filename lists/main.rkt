@@ -227,12 +227,10 @@
 
 ;;Produces a list of all eye colors in family tree
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))(cons 'blue empty))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'red (make-unknown)(make-unknown))(make-unknown)))(cons 'blue (cons 'red empty)))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'green (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'green (cons 'blue empty))))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown)))(cons 'blue (cons 'blue empty)))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'blue (cons 'blue empty))))
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty))))))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown)))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'red (make-unknown)(make-unknown))))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))))
 
 (define (eye-colors ftree)
   (cond

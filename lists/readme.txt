@@ -102,14 +102,3 @@ count-persons:
         just kept adding a mother/father to each person for each test so I knew the
         result would be one more than the pervious test.
 
-eye-colors:
-
-	Please see the tests for these functions. Basicly the same for the last.
-        All code paths covered twice, and I know these were right becuase I added
-        One person to the tree every time I made a new test and just added something
-        new to the list. buut since A list was returned I tried varying eye colors to
-        make sure the tree was tranversing properly 
-        (no requirment for anything to be in order) and with this I can prove my other
-        code works becuase it is the same alogrithm expect this appeneds a list instead
-        of adding
-
