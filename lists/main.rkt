@@ -195,7 +195,8 @@
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 3)
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 4)
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 5)
-
+(check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))))) 6)
+(check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) 6)
 ;;Returns the number of people in a family tree.
 (define (count-persons ftree)
   (cond
@@ -210,6 +211,8 @@
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 22)
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 22)
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 22)
+(check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 22)
+(check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) 22)
 
 (define (average-age ftree)
   (/ (get-total-age ftree) (count-persons ftree)))

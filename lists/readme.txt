@@ -1,3 +1,5 @@
+My program is correct becuase:
+
 check-temps1:
 
 	Refer to the test cases. I wrote 9 test cases for this function. The
@@ -72,3 +74,31 @@ eliminate-exp:
         and (0 ,12) as the list. The test passed by returning (0). The
         final test had ua = 10 and (0,12,8) as the list. The test passed
         by returning the list of (0,8)
+
+suffixes: 
+
+	Please see the tests for these functions. I used 4 tests to
+        check this this. I Worte 4 tests for this case. I used simalar
+        test cases to what was on the assigment page. One of the tests
+	was the test on the assigment page ('a,'b,'c,'d). The test passed.
+        I also used an empty list that return a list that contained an 
+        empty list. One of the tests pased in ('a) and returned (list (list a') empty)
+        The last test passed in (a',b',c',d',e') and returned the output expcted
+        as defined by your example.
+
+average-age:
+
+	Please see the tests for these functions. My test cases for these covered 
+	the 4 cases of what the current node is: leaf, left branch, right brnach, 
+        and node with a left and right branch. All code paths were covered at least twice.
+        I know the output is right becuase every person I passed had an age of 22. 
+
+count-persons:
+
+	Plese see the tests for the functions. 7 test cases where written for this
+        function. As disriced in average-age I tested all 4 cases for this function
+        and all code path in this function were covered at least once. I know these
+        test were good becuase when I wrote these tests I started with one person and
+        just kept adding a mother/father to each person for each test so I knew the
+        result would be one more than the pervious test.
+
