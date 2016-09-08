@@ -1,0 +1,16 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname main) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(check-expect (check-temps1(list)) false)
+(check-expect (check-temps1(list 5 10 15)) true)
+(check-expect (check-temps1(list 5 10 15)) true)
+(check-expect (check-temps1(list 7 10  20 95)) true)
+(check-expect (check-temps1(list 4 10  20 95)) false)
+(check-expect (check-temps1(list 5 10  20 97)) false)
+
+(define (check-temps1 temps)
+  (if (empty? temps) false
+      (if(and (<= (first temps) 95) (>= (first temps) 5))
+         (if (empty? (rest temps)) true (check-temps1 (rest temps))) false)))  
+
+(check-temps1 (list 7 10  20 95))
