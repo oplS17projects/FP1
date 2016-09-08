@@ -56,7 +56,7 @@
 (check-expect (convert (cons 1 (cons 2 empty))) 21)
 (check-expect (convert (cons 1 (cons 2 (cons 3 empty)))) 321)
 (check-expect (convert (cons 1 (cons 3 (cons 2 empty)))) 321)
-(check-expect (convert (cons 1 (cons 2 (cons 3 empty)))) 321)
+(check-expect (convert (cons 3 (cons 2 (cons 1 empty)))) 321)
 
 ;; Consumes a list of digits (numbers between 0 and 9) and produces the corresponding number. The first digit is the least significant, and so on.
 ;; reutrn a number eith the digits in order from greatesr to least
@@ -116,20 +116,18 @@
               (wish n (rest l)))])]))
 
 ;;Consumes a list of toy prices and computes the average price of a toy
-(check-expect (average-price (cons 2(cons 2 (cons 2 empty)))) 2)
 (check-expect (average-price empty) 0)
+(check-expect (average-price (cons 2(cons 2 (cons 2 empty)))) 2)
 (check-expect (average-price (cons 1.5 empty)) 1.5)
 (check-expect (average-price (cons 1(cons 6 (cons 8 (cons 10 empty))))) 6.25)
 
 (define (average-price prices)
   (cond
    [(empty? prices) 0]
-   [(empty? prices) 0]
    [else (/ (get-total prices) (list-count prices))]))
 
 (define (get-total prices)
   (cond
-  [(empty? prices) 0]
   [(empty? (rest prices))(first prices)]
   [else (get-total (cons (+ (first prices) (first(rest prices)))(rest(rest prices))))]))
 
@@ -163,8 +161,8 @@
 
 ;;Eliminates from lotp all toys whose price is greater than ua.
 (check-expect (eliminate-exp 5 empty) empty)
-(check-expect (eliminate-exp 5 (cons 0 empty)) (cons 0 empty))
-(check-expect (eliminate-exp -1 (cons 0 empty)) empty)
+(check-expect (eliminate-exp 5 (cons 1 empty)) (cons 1 empty))
+(check-expect (eliminate-exp 5 (cons 10 empty)) empty)
 (check-expect (eliminate-exp 10 (cons 0 (cons 12 empty))) (cons 0 empty))
 (check-expect (eliminate-exp 10 (cons 0 (cons 12 (cons 8 empty)))) (cons 0(cons 8 empty)))
 
@@ -197,7 +195,8 @@
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 3)
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 4)
 (check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 5)
-
+(check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))))) 6)
+(check-expect (count-persons (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) 6)
 ;;Returns the number of people in a family tree.
 (define (count-persons ftree)
   (cond
@@ -212,6 +211,8 @@
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 22)
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))) 22)
 (check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 22)
+(check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 22)
+(check-expect (average-age (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) 22)
 
 (define (average-age ftree)
   (/ (get-total-age ftree) (count-persons ftree)))
@@ -226,10 +227,12 @@
 
 ;;Produces a list of all eye colors in family tree
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))(cons 'blue empty))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown)))(cons 'blue (cons 'blue empty)))
-(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'blue (cons 'blue empty))))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'red (make-unknown)(make-unknown))(make-unknown)))(cons 'blue (cons 'red empty)))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'green (make-unknown)(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'green (cons 'blue empty))))
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))
 (check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty))))))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown)))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))))
+(check-expect(eye-colors (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'red (make-unknown)(make-unknown))))))(cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue (cons 'blue empty)))))))
 
 (define (eye-colors ftree)
   (cond
