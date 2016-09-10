@@ -1,20 +1,7 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname main) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
-(check-expect (check-temps1(list)) false)
-(check-expect (check-temps1 empty) false)
-(check-expect (check-temps1(list 5 10 15)) true)
-(check-expect (check-temps1(cons 7 (cons 10 (cons 22 empty)))) true)
-(check-expect (check-temps1(list 7 10  20 95)) true)
-(check-expect (check-temps1(list 4 10  20 95)) false)
-(check-expect (check-temps1(list 5 10  20 97)) false)
-(check-expect (check-temps1(cons 0 (cons 10 (cons 22 empty)))) false)
-(check-expect (check-temps1(cons 15 (cons 100 (cons 10 empty)))) false)
 
-(define (check-temps1 temps)
-  (cond
-    [(empty? temps) false]
-    [else (= (filter (lambda (x) (or (> x 95) (< x 5))) temps)) temps)]))
 
 (check-expect (eliminate-exp 5 empty) empty)
 (check-expect (eliminate-exp 5 (cons 1 empty)) (cons 1 empty))
@@ -44,16 +31,32 @@
 (define (to-celsius fahrenheit)
   (*(- fahrenheit 32) (/ 5 9)))
 
-(check-expect (average-price empty) 0)
-(check-expect (average-price (cons 2(cons 2 (cons 2 empty)))) 2)
-(check-expect (average-price (cons 1.5 empty)) 1.5)
-(check-expect (average-price (cons 1(cons 6 (cons 8 (cons 10 empty))))) 6.25)
+;;(check-expect (average-price empty) 0)
+;;(check-expect (average-price (cons 2(cons 2 (cons 2 empty)))) 2)
+;;(check-expect (average-price (cons 1.5 empty)) 1.5)
+;;(check-expect (average-price (cons 1(cons 6 (cons 8 (cons 10 empty))))) 6.25)
 
-(define (average-price prices)
+;;(define (average-price prices)
+;;  (cond
+;;   [(empty? prices) 0]
+;;   [else (/ (foldl + 0 prices) (foldl cons 1 prices))]))
+
+
+(check-expect (flatten (list (list 1 2) (list 3 4 5) (list 6)))(list 1 2 3 4 5 6))
+(check-expect (flatten (list (list 1 2 3 4))) (list 1 2 3 4))
+(check-expect (flatten empty) empty)
+
+(define (flatten li)
   (cond
-   [(empty? prices) 0]
-   [else (/ (foldl + 0 prices) (foldl cons 1 prices))]))
+    [(empty? li) empty]
+    [(not (list? li)) (list li)]
+    [else (append (flatten (first li)) (flatten (rest li)))]))
 
-(define (flatten l)
-  (cond [(empty? l)      null]
-        [else            (append (flatten (first l)) (flatten (rest l)))]))
+(check-expect (flatten-foldr (list (list 1 2) (list 3 4 5) (list 6)))(list 1 2 3 4 5 6))
+(check-expect (flatten-foldr (list (list 1 2 3 4))) (list 1 2 3 4))
+(check-expect (flatten-foldr empty) empty)
+
+(define (flatten-foldr li)
+  (cond
+    [(empty? li) empty]
+    [else (foldr (lambda (x y)(append x y)) '() li)]))
