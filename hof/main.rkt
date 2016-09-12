@@ -3,10 +3,16 @@
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname main) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (check-expect (check-temps1(list)) empty)
 (check-expect (check-temps1 empty) empty)
+(check-expect (check-temps1(list 5)) true)
+(check-expect (check-temps1(list 95)) true)
 (check-expect (check-temps1(list 5 10 15)) true)
 (check-expect (check-temps1(cons 7 (cons 10 (cons 22 empty)))) true)
 (check-expect (check-temps1(list 7 10  20 95)) true)
+(check-expect (check-temps1(list 4)) false)
+(check-expect (check-temps1(list 100)) false)
 (check-expect (check-temps1(list 4 10  20 95)) false)
+(check-expect (check-temps1(list 4 3 95)) false)
+(check-expect (check-temps1(list 4 3 97)) false)
 (check-expect (check-temps1(list 5 10  20 97)) false)
 (check-expect (check-temps1(cons 0 (cons 10 (cons 22 empty)))) false)
 (check-expect (check-temps1(cons 15 (cons 100 (cons 10 empty)))) false)
@@ -20,6 +26,10 @@
 
 (check-expect (check-temps(list) 10 10) empty)
 (check-expect (check-temps empty 10 10) empty)
+(check-expect (check-temps (list 5) 5 15) true)
+(check-expect (check-temps (list 15) 5 15) true)
+(check-expect (check-temps (list 4) 5 15) false)
+(check-expect (check-temps (list 16) 5 15) false)
 (check-expect (check-temps (list 5 10 15) 5 15) true)
 (check-expect (check-temps (cons 7 (cons 10 (cons 22 empty))) 6 30) true)
 (check-expect (check-temps (cons 7 (cons 10 (cons 22 empty))) 5 95 ) true)
@@ -28,16 +38,17 @@
 (check-expect (check-temps (list 5 200  20 97) 5 90) false)
 (check-expect (check-temps (cons -2 (cons 10 (cons 22 empty))) 0 15) false)
 (check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 15 80) false)
-(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 80 15) 'error)
-(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 85 80) 'error)
-(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 80 15) 'error)
+(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 80 15)  false)
+(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 85 80)  false)
+(check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 80 15)  false)
 (check-expect (check-temps (cons 15 (cons 100 (cons 10 empty))) 0  0) false)
 (check-expect (check-temps (cons 5 (cons 5 (cons 5 empty))) 5  5) true)
-(check-expect (check-temps (cons 10 (cons 10 (cons 10 empty))) 10  10) true)
+(check-expect (check-temps (list 10) 10  10) true)
+(check-expect (check-temps (list 11) 10  10) false)
 
 (define (check-temps temps low high)
   (cond
-    [(> low high) 'error]
+    [(> low high) false]
     [(empty? temps) null]
     [else (equal? temps (filter (lambda (x) (and (>= x low) (<= x high))) temps))]))
 
@@ -85,6 +96,20 @@
 (check-expect (flatten (list (list 1 2 3 4))) (list 1 2 3 4))
 (check-expect (flatten empty) empty)
 
+
+(check-expect ((compose-func square double) 2) 16)
+
+(define (compose-func after before)
+  (lambda (x) (after (before x))))
+
+(define (double it)
+ (+ it it))
+
+(define (square it)
+ (* it it))
+
+((compose-func square double) 2)
+
 (define (flatten li)
   (cond
     [(empty? li) empty]
@@ -92,6 +117,7 @@
     [else (append (flatten (first li)) (flatten (rest li)))]))
 
 (check-expect (flatten-foldr (list (list 1 2) (list 3 4 5) (list 6)))(list 1 2 3 4 5 6))
+(check-expect (flatten-foldr (list (list 1) (list 1))(list 1 1))
 (check-expect (flatten-foldr (list (list 1 2 3 4))) (list 1 2 3 4))
 (check-expect (flatten-foldr empty) empty)
 
@@ -100,10 +126,16 @@
     [(empty? li) empty]
     [else (foldr (lambda (x y)(append x y)) '() li)]))
 
-(define (bucket li)...)
+(define (bucket li)
+  (cond
+    [(empty? li) empty]
+    [else (foldr (lambda (x y)
+            (cond
+              [(empty? y) empty]
+              [(= x y) (cons x empty)]
+              [else empty])) '() li)]))
 
-;;(bucket (list empty))
-;;(bucket (list 1))
+(bucket (list 1 1))
 
 (define-struct unknown ())
 (define-struct person (name birthyear eyecolor father mother))
@@ -112,9 +144,9 @@
 (check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown)))
 (check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-person "Rob" 1994 'blue (make-unknown)(make-unknown)))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-person "Robl" 1994 'blue (make-unknown)(make-unknown))))
 (check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Rob" 1994 'blue (make-unknown)(make-unknown)))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Robl" 1994 'blue (make-unknown)(make-unknown))))
-;;(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown))))) 5)
-;;(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-unknown)(make-unknown)))))) 6)
-;;(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person 'Rob 1994 'blue (make-unknown)(make-person 'Rob 1994 'blue (make-person 'Rob 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) 6)
+(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Rob" 1994 'blue (make-unknown)(make-person "Rob" 1994 'blue (make-unknown)(make-unknown))))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Robl" 1994 'blue (make-unknown)(make-person "Robl" 1994 'blue (make-unknown)(make-unknown)))))
+(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Rob" 1994 'blue (make-unknown)(make-person "Rob" 1994 'blue (make-unknown)(make-person "Rob" 1994 'blue (make-unknown)(make-unknown)))))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Robl" 1994 'blue (make-unknown)(make-person "Robl" 1994 'blue (make-unknown)(make-person "Robl" 1994 'blue (make-unknown)(make-unknown))))))
+(check-expect (tree-map add-l (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Rob" 1994 'blue (make-unknown)(make-person "Rob" 1994 'blue (make-person "Rob" 1994 'blue (make-unknown)(make-unknown))(make-unknown))))) (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown))(make-person "Robl" 1994 'blue (make-unknown)(make-person "Robl" 1994 'blue (make-person "Robl" 1994 'blue (make-unknown)(make-unknown))(make-unknown)))))
               
 
 (define (tree-map f tree)
@@ -126,3 +158,12 @@
 
 (define (add-l str)
   (list->string(append (string->list str)(cons #\l empty))))
+
+
+(define (add-last-name tree lname)
+  (tree-map string-append tree))
+
+
+((compose-func  string-append (add-l "foo")) "x")
+(check-expect (add-last-name (make-person "Rob" 1994 'blue (make-unknown)(make-unknown)) "Farinelli") (make-person "Rob Farinelli" 1994 'blue (make-unknown)(make-unknown)))
+(check-expect (add-last-name (make-person "Rob" 1994 'blue (make-unknown)(make-unknown)) "Farinelli") (make-person "Rob Farinelli" 1994 'blue (make-unknown)(make-unknown)))
