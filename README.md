@@ -1,10 +1,6 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
-
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
+#Part 1: DONE
 #Part 2: Try a Library
 In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
 
@@ -55,7 +51,7 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: (library name here)
+## My Library: RackUnit
 My name: Jake Adamson
 
 Write what you did!
