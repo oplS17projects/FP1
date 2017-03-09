@@ -65,6 +65,7 @@ For this assignment I tested out the sql db and csv-reading libraries, to test t
 the iris dataset from https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data and used compose to
 store the result in a list of lists
 
+```
 #lang racket 
 ;; define list of iris data directly from url
 (define iris_url "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data")
@@ -79,12 +80,11 @@ store the result in a list of lists
 
 To test out the db library I created a sqlite database "my.db" and created some a test table and a table to store the some rows of iris data in.
 
+```
 ; create test table 
 (query conn
             "create table testing(id integer Primary key autoincrement, test text not null)")
-
-
-#lang racket 
+ 
 ;; create table for iris dataset 
 (query-exec conn
             "create table iris
@@ -97,7 +97,7 @@ class text not null)")
 ```
 
 The third library I tested was the sql library. it has a framework to produce sql queries using values instead of strings in the examples below
- #lang racket 
+```
 ;; use statement above to insert a row into iris db
 (query conn insert_iris
        "5.1" "3.5" "1.4" "0.2" "Iris-setosa")
@@ -118,7 +118,7 @@ The third library I tested was the sql library. it has a framework to produce sq
         (class "Iris-virginica"))
 ```
 the output of running the test code is below 
- #lang racket 
+```
 (object:connection% ...)
 (simple-result '((insert-id . #f) (affected-rows . 0)))
 (simple-result '((insert-id . 1) (affected-rows . 1)))
@@ -133,8 +133,14 @@ the output of running the test code is below
 ..............
 ..............
 ..............
+  ("6.5" "3.0" "5.2" "2.0" "Iris-virginica")
+  ("6.2" "3.4" "5.4" "2.3" "Iris-virginica")
+  ("5.9" "3.0" "5.1" "1.8" "Iris-virginica")
 (""))
 ```
+
+![DB after inserts](sample.png)
+
 
 The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
 
