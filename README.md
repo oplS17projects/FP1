@@ -139,7 +139,7 @@ the output of running the test code is below
 (""))
 ```
 
-![DB after inserts](sample.png)
+![DB after inserts](FP1/sample.PNG)
 
 
 The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
