@@ -19,6 +19,10 @@ Once I got the lib working I started to look through it to find parts that would
 #lang racket
 (require rsound)
 
+;; this rsound object is one sawtooth wave
+;; that is being modulated by a sine wave at
+;; 2hz. when the sin is multiplyed by 0.1
+;; is to controll the volume
 (define vibrato-tone
   (network ()
            [lfo <= sine-wave 2]
@@ -39,6 +43,9 @@ Once I got the lib working I started to look through it to find parts that would
 (stop)
 
 ;; strange siren
+;; this rsound has waveform in a is being
+;; modulated by a sawtooth wave that ocsilating
+;; at 2hz. finally a and b summed
 (define sum-of-sines
      (network ()
               [lfo <= sawtooth-wave 2]
@@ -50,6 +57,9 @@ Once I got the lib working I started to look through it to find parts that would
 (stop)
 
 ;; boring sine with sub
+;; rsound is made up of a square wave
+;; that is an octave lower then the sine
+;; and finaly they are summed together
 (define sound-and-sub
   (let ([f 440])
      (network ()
@@ -77,13 +87,14 @@ Once I got the synth sounds to work I want to see if I chould hook up a MIDI fil
 ;; this gives you all the MIDI info
 ;;(midi-file-parse "TeenageMutantNinjaTurtles.mid")
 (define song (MIDIFile->notelist (midi-file-parse "TeenageMutantNinjaTurtles.mid")))
+;; rsound object
+;;procedure takes the freq that you want it play at
 (define (vibrato-tone2 f)
   (network ()
-
            [sin <= pulse-wave .7 f ]
            [out = (* 0.1 sin)]))
 
-
+;; plays midi song by move through the list of notes
 (define (test l)
   (signal-play (vibrato-tone2 (midi-note-num->pitch (note-pitch (car l)))))
   (sleep 1)
@@ -91,9 +102,8 @@ Once I got the synth sounds to work I want to see if I chould hook up a MIDI fil
   (if (empty? (cdr l))
       (stop)
       (test (cdr l))))
-      
+;; call to play the song      
 (test song)
-
 ```
 Here is the data in a MIDIFile struct which was made by using midi-readwrite.
 ```racket
