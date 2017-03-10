@@ -60,9 +60,11 @@ Once I got the lib working I started to look through it to find parts that would
 (sleep 5)
 (stop)
 ```
-#Here a picture of the waveforms
-Sine 1,2 is what sume of sines looks like and you can see the other wave forms that are being used.
+#Waveforms
 ![alt text][wave]
+
+Sine 1,2 is what sum-of-sines waveform looks like and you can see the other waveforms that are being used as well.
+
 Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file. While getting the MIDI data I used midi-note-num->pitch fuction to turn the notes in to pitches this functions is part of rsound.
 
 ```racket
@@ -124,19 +126,6 @@ Here is the data in a MIDIFile struct which was made by using midi-readwrite.
    (list 36 (ChannelMessage 'note-on 1 '(42 0)))
    ```
 While I did not get to try out everything Rsound could do I had fun playing with it and making weird sounds.
-
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
 
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
