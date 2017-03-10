@@ -64,7 +64,7 @@ Once I got the lib working I started to look through it to find parts that would
 ![alt text][wave]
 
 Sine 1,2 is what sum-of-sines waveform looks like and you can see the other waveforms that are being used as well.
-
+#MIDI
 Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file. While getting the MIDI data I used midi-note-num->pitch fuction to turn the notes in to pitches this functions is part of rsound.
 
 ```racket
