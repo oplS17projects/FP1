@@ -137,6 +137,15 @@ Here is the data in a MIDIFile struct which was made by using midi-readwrite.
    ```
 While I did not get to try out everything Rsound can do, I had fun playing with it and making weird sounds.
 
+#Playback
+Finaly I tried to mess with Rsound playback procedures but I kept getting errors. Here is the code and a screen shot of the errors.
+```racket
+;; the file is just a song i recorded in the propper format for playback
+(play (rs-read "2017-01-05_18-43-32.wav"))
+```
+Heres the errors. They had to do with my soundcard not being at the right resolution. I messed with them a little but that didn't fix the problem.
+
+![alt text][error]
 
 -The waveform picture is from: https://en.wikipedia.org/wiki/Waveform#/media/File:Waveforms.svg
 <!-- Links -->
@@ -148,4 +157,5 @@ While I did not get to try out everything Rsound can do, I had fun playing with 
 [ref-push]: http://gitref.org/remotes/#push
 [pull-request]: https://help.github.com/articles/creating-a-pull-request
 [wave]: https://github.com/Jake-The-Human/FP1/blob/master/780px-Waveforms.svg.png
+[error]: https://github.com/Jake-The-Human/FP1/blob/master/error.PNG
 
