@@ -1,36 +1,3 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
-#Part 1: DONE
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
-
-Please choose libraries that you think you might be interested in using in your final project.
-
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
-
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
 #Part 3: Write your Report
 Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
 
@@ -51,8 +18,63 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: RackUnit
+## My Library: Rsound
 My name: Jake Adamson
+https://docs.racket-lang.org/rsound/index.html
+I want to try the library Rsound which is an interesting lib that lets you do sound manipulation from play back to sound synthesis. 
+Here the most basic example of how Rsound works.
+```racket
+(require rsound)
+ 
+(play ding)
+```
+The procedure play takes an Rsound object which is the final state of the audio object before playing. The documentation says that (play ding) is an easy way to test you’re the lib to see if your installation work. And in fact, I had trouble getting this lib to work because my sound card was set to an audio resolution that was higher than it was expecting. 
+
+Once I got the lib working I started to look through it to find parts that would be fun just to mess around with at first. And I found these procedures called networks. syntactically it looks a lot like cond it takes a bunch of inputs but the last line always has an out = (sound). here a few examples I was playing with.
+
+```racket
+#lang racket
+(require rsound)
+
+(define vibrato-tone
+  (network ()
+           [lfo <= sine-wave 2]
+           [sin <= sawtooth-wave (+ 400 (* 50 lfo))]
+           [out = (* 0.1 sin)]))
+(signal-play vibrato-tone)
+(sleep 5)
+(stop)
+;; cool alarm sound
+(define vibrato-tone2
+  (network ()
+           [lfo <= sawtooth-wave 2]
+           [sin <= pulse-wave .7 (+ 400 (* 50 lfo))]
+           [out = (* 0.1 sin)]))
+(signal-play vibrato-tone2)
+(sleep 5)
+(stop)
+;; strange siren
+(define sum-of-sines
+     (network ()
+              [lfo <= sawtooth-wave 2]
+              [a <= sine-wave (+ 34(* 75 lfo))]
+              [b <= sine-wave 460]
+              [out = (+ a b)]))
+(signal-play sum-of-sines)
+(sleep 5)
+(stop)
+;; boring sine with sub
+(define sound-and-sub
+  (let ([f 440])
+     (network ()
+              [sub <= square-wave (/ f 2)]
+              [b <= sine-wave f]
+              [out = (+ sub b)])))
+(signal-play sound-and-sub)
+(sleep 5)
+(stop)
+```
+
 
 Write what you did!
 Remember that this report must include:
