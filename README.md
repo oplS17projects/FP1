@@ -60,7 +60,9 @@ Once I got the lib working I started to look through it to find parts that would
 (sleep 5)
 (stop)
 ```
-
+#Here a picture of the waveforms
+Sine 1,2 is what sume of sines looks like and you can see the other wave forms that are being used.
+![alt text][wave]
 Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file. While getting the MIDI data I used midi-note-num->pitch fuction to turn the notes in to pitches this functions is part of rsound.
 
 ```racket
@@ -144,4 +146,5 @@ This is the first part of a larger project. The final project schedule is [here]
 [ref-commit]: http://gitref.org/basic/#commit
 [ref-push]: http://gitref.org/remotes/#push
 [pull-request]: https://help.github.com/articles/creating-a-pull-request
+[wave]: https://github.com/Jake-The-Human/FP1/blob/master/LFO.ht2.gif
 
