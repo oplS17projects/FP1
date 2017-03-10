@@ -1,28 +1,9 @@
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
 ## My Library: Rsound
 My name: Jake Adamson
 https://docs.racket-lang.org/rsound/index.html
 I want to try the library Rsound which is an interesting lib that lets you do sound manipulation from play back to sound synthesis. 
 Here the most basic example of how Rsound works.
+
 ```racket
 (require rsound)
  
@@ -44,6 +25,7 @@ Once I got the lib working I started to look through it to find parts that would
 (signal-play vibrato-tone)
 (sleep 5)
 (stop)
+
 ;; cool alarm sound
 (define vibrato-tone2
   (network ()
@@ -53,6 +35,7 @@ Once I got the lib working I started to look through it to find parts that would
 (signal-play vibrato-tone2)
 (sleep 5)
 (stop)
+
 ;; strange siren
 (define sum-of-sines
      (network ()
@@ -63,6 +46,7 @@ Once I got the lib working I started to look through it to find parts that would
 (signal-play sum-of-sines)
 (sleep 5)
 (stop)
+
 ;; boring sine with sub
 (define sound-and-sub
   (let ([f 440])
@@ -75,6 +59,66 @@ Once I got the lib working I started to look through it to find parts that would
 (stop)
 ```
 
+Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file.
+
+```racket
+#lang racket
+(require rsound)
+(require rsound/single-cycle)
+(require midi-readwrite)
+
+(define sw (list 43 50 48 59 57 48 59 57 50))
+;; this gives you all the MIDI info
+;;(midi-file-parse "TeenageMutantNinjaTurtles.mid")
+(define a (MIDIFile->notelist (midi-file-parse "TeenageMutantNinjaTurtles.mid")))
+(define (vibrato-tone2 f)
+  (network ()
+
+           [sin <= pulse-wave .7 f ]
+           [out = (* 0.1 sin)]))
+
+
+(define (test l)
+  (signal-play (vibrato-tone2 (midi-note-num->pitch (note-pitch (car l)))))
+  (sleep 1)
+  (stop)
+  (if (empty? (cdr l))
+      (stop)
+      (test (cdr l))))
+      
+(test a)
+
+```
+Here is the data that is parsed out of the midi file. Using that lib.
+```
+(MIDIFile
+ 'single
+ (TicksPerQuarter 96)
+ (list
+  (list
+   (list 0 (MetaMessage '(sequence/track-name #"untitled")))
+   (list 0 (MetaMessage '(text #"Converted from tmnt.cmf by CMF2MID\n")))
+   (list 0 (MetaMessage '(time-signature (4 2 24 8))))
+   (list 0 (MetaMessage '(key-signature #"\0" major)))
+   (list 0 (MetaMessage '(set-tempo 705882)))
+   (list 0 (ChannelMessage 'program-change 0 '(33 #f)))
+   (list 0 (ChannelMessage 'control-change 0 '(7 100)))
+   (list 0 (ChannelMessage 'program-change 0 '(33 #f)))
+   (list 0 (ChannelMessage 'program-change 1 '(48 #f)))
+   (list 0 (ChannelMessage 'control-change 1 '(7 70)))
+   (list 0 (ChannelMessage 'program-change 1 '(48 #f)))
+   (list 0 (ChannelMessage 'program-change 2 '(30 #f)))
+   (list 0 (ChannelMessage 'control-change 2 '(7 100)))
+   (list 0 (ChannelMessage 'program-change 2 '(30 #f)))
+   (list 0 (ChannelMessage 'program-change 3 '(0 #f)))
+   (list 0 (ChannelMessage 'control-change 3 '(7 120)))
+   (list 0 (ChannelMessage 'note-on 1 '(49 100)))
+   (list 0 (ChannelMessage 'note-on 1 '(35 100)))
+   (list 12 (ChannelMessage 'note-on 1 '(35 0)))
+   (list 12 (ChannelMessage 'note-on 1 '(49 0)))
+   (list 24 (ChannelMessage 'note-on 1 '(42 100)))
+   (list 36 (ChannelMessage 'note-on 1 '(42 0)))
+   ```
 
 Write what you did!
 Remember that this report must include:
