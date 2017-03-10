@@ -73,7 +73,7 @@ Once I got the lib working I started to look through it to find parts that would
 #Waveforms
 ![alt text][wave]
 
-Sine 1,2 is what sum-of-sines waveform looks like and you can see the other waveforms that are being used as well.
+This is what some of the waveforms look like. When using the low frequency ocliator (lfo) it will make the wave forms less stable and make them move around.
 #MIDI
 Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file. While getting the MIDI data I used midi-note-num->pitch fuction to turn the notes in to pitches this functions is part of rsound.
 
@@ -137,6 +137,8 @@ Here is the data in a MIDIFile struct which was made by using midi-readwrite.
    ```
 While I did not get to try out everything Rsound can do, I had fun playing with it and making weird sounds.
 
+
+-The waveform picture is from: https://en.wikipedia.org/wiki/Waveform#/media/File:Waveforms.svg
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
 [markdown]: https://help.github.com/articles/markdown-basics/
@@ -145,5 +147,5 @@ While I did not get to try out everything Rsound can do, I had fun playing with 
 [ref-commit]: http://gitref.org/basic/#commit
 [ref-push]: http://gitref.org/remotes/#push
 [pull-request]: https://help.github.com/articles/creating-a-pull-request
-[wave]: https://github.com/Jake-The-Human/FP1/blob/master/LFO.ht2.gif
+[wave]: https://github.com/Jake-The-Human/FP1/blob/master/780px-Waveforms.svg.png
 
