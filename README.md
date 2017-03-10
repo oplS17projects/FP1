@@ -4,9 +4,6 @@ DUE Sunday, March 12, 2017
 ## My Library: sql db csv-reading
 My name: Christopher Pearce
 
-Write what you did!
-Remember that this report must include:
-
 For this assignment I tested out the sql db and csv-reading libraries, to test the csv-reading library I downloaded
 the iris dataset from https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data and used compose to
 store the result in a list of lists
@@ -86,11 +83,6 @@ the output of running the test code is below
 ```
 
 ![DB after inserts](sample.PNG)
-
-## How to Prepare and Submit this assignment
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
 
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
