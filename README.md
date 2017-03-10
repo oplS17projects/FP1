@@ -1,6 +1,8 @@
 ## My Library: Rsound
 My name: Jake Adamson
+
 https://docs.racket-lang.org/rsound/index.html
+
 I want to try the library Rsound which is an interesting lib that lets you do sound manipulation from play back to sound synthesis. 
 Here the most basic example of how Rsound works.
 
@@ -59,7 +61,7 @@ Once I got the lib working I started to look through it to find parts that would
 (stop)
 ```
 
-Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file.
+Once I got the synth sounds to work I want to see if I chould hook up a MIDI file and get a synth to play a song. All I end up getting to work was a bunch of pitches to play evenly space out that did not resemble the song at all. I also need to get midi-readwrite lib to get the MIDI notes out of the file. While getting the MIDI data I used midi-note-num->pitch fuction to turn the notes in to pitches this functions is part of rsound.
 
 ```racket
 #lang racket
@@ -70,7 +72,7 @@ Once I got the synth sounds to work I want to see if I chould hook up a MIDI fil
 (define sw (list 43 50 48 59 57 48 59 57 50))
 ;; this gives you all the MIDI info
 ;;(midi-file-parse "TeenageMutantNinjaTurtles.mid")
-(define a (MIDIFile->notelist (midi-file-parse "TeenageMutantNinjaTurtles.mid")))
+(define song (MIDIFile->notelist (midi-file-parse "TeenageMutantNinjaTurtles.mid")))
 (define (vibrato-tone2 f)
   (network ()
 
@@ -86,11 +88,11 @@ Once I got the synth sounds to work I want to see if I chould hook up a MIDI fil
       (stop)
       (test (cdr l))))
       
-(test a)
+(test song)
 
 ```
-Here is the data that is parsed out of the midi file. Using that lib.
-```
+Here is the data in a MIDIFile struct which was made by using midi-readwrite.
+```racket
 (MIDIFile
  'single
  (TicksPerQuarter 96)
@@ -119,23 +121,8 @@ Here is the data that is parsed out of the midi file. Using that lib.
    (list 24 (ChannelMessage 'note-on 1 '(42 100)))
    (list 36 (ChannelMessage 'note-on 1 '(42 0)))
    ```
+While I did not get to try out everything Rsound could do I had fun playing with it and making weird sounds.
 
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
 
 ## How to Prepare and Submit this assignment
 
