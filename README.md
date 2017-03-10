@@ -135,7 +135,7 @@ Here is the data in a MIDIFile struct which was made by using midi-readwrite.
    (list 24 (ChannelMessage 'note-on 1 '(42 100)))
    (list 36 (ChannelMessage 'note-on 1 '(42 0)))
    ```
-While I did not get to try out everything Rsound could do I had fun playing with it and making weird sounds.
+While I did not get to try out everything Rsound can do, I had fun playing with it and making weird sounds.
 
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
