@@ -1,6 +1,8 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
+Testing
+
 #Part 1: Get github
 If you don't have a github account, go get one. https://github.com/
 This whole assignment will be done and submitted via github, and you're already here!
