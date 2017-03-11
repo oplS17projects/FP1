@@ -1,8 +1,6 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
-Testing
-
 #Part 1: Get github
 If you don't have a github account, go get one. https://github.com/
 This whole assignment will be done and submitted via github, and you're already here!
@@ -58,7 +56,7 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 ```
 
 ## My Library: (library name here)
-My name:
+My name: Chuong Vu
 
 Write what you did!
 Remember that this report must include:
