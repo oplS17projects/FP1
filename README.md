@@ -9,8 +9,8 @@ Where to Find Code: This repository located in the above github. <br>
 <br>
 What I did: <br>
 <br>
-I started off by opening the document recommended and scrolling through till I seen Web Applications In Racket. A light bulb popped<br>
-in my head instantly because I love to create and design websites! I followed this neat little tutorial that was listed and understood<br> some of the code provided through the use of the library. Below is an example of the code:<br>
+I started off by opening the document recommended and scrolling through till I seen Web Applications In Racket. A light bulb popped 
+in my head instantly because I love to create and design websites! I followed this neat little tutorial that was listed and understood some of the code provided through the use of the library. Below is an example of the code:<br>
 <br>
 ****************** START OF CODE SAMPLE *****************************<br>
 <br>
