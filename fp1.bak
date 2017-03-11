@@ -1,0 +1,18 @@
+#lang racket
+(require 2htdp/image)
+(require 2htdp/universe)
+
+(define (bubble x y size speed color)
+  (define (dispatch comm val)
+    (cond [(equal? comm 'x) x]
+          [(equal? comm 'y) y]
+          [(equal? comm 'update-x) (set! x val)]
+          [(equal? comm 'update-y) (set! y val)]
+          [(equal? comm 'size) size]
+          [(equal? speed) speed]
+          [(equal? color) color]
+          [else (error "bubble: unknown command --" comm)]))
+    dispatch)
+          
+(define background (bitmap "background.jpg"))
+
