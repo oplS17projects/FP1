@@ -23,7 +23,7 @@ Then I can open the webpage from the new written file.
 (close-output-port out)
 ```
 ## Screenshot of webpage
-![alt tag](https://raw.githubusercontent/ramegali/FP1/Sample Title.png)
+![alt tag](https://raw.githubusercontent/ramegali/FP1/Sample\ Title.png)
 
 *A screenshot of the resulting output is also included in this directory.*
 
