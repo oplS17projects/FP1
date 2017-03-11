@@ -36,7 +36,7 @@ in my head instantly because I love to create and design websites! I followed th
    the output result of the code looks like:
    
    
-   <img src="https://gyazo.com/8f56ab0a7e5a278d962c30eff093ef5f" width="15%"></img>
+   <img src="https://i.gyazo.com/8f56ab0a7e5a278d962c30eff093ef5f.png width="15%"></img>
    
    A Diagram for the library can be found below:
    
