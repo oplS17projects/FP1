@@ -1,8 +1,8 @@
 ## Derek Ross - Exploration 1 - OPL - Fred Martin -  Final Project
 
 ## My Library ###
-Library Name: Web Applications In Racket  -  #lang web-server/insta   <bl>
-My name: Derek Ross
+Library Name: Web Applications In Racket  -  #lang web-server/insta   <br>
+My name: Derek Ross 
 My Email: Derek_Ross@student.uml.edu
 My GitHub: https://github.com/DerekR0123
 Where to Find Code: This repository located in the above github.
