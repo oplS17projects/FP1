@@ -18,7 +18,7 @@ What I did:
 
 - I define a function called "initscreen" to initialize a screen (500x500) and animate the ball with the equation x and y provided to make the "Cardioid" animation which is provided in the wiki page.
 
-![alt tag](https://github.com/hnguyenworkstation/FP1/images/function.png)
+![alt tag](https://github.com/hnguyenworkstation/FP1/blob/master/images/function.png)
 
 	```
 	(define (initscreen height)
@@ -46,5 +46,5 @@ What I did:
 
 ###### RESULT SCREENSHOT
 
-![alt tag](https://github.com/hnguyenworkstation/FP1/images/result.png)
+![alt tag](https://github.com/hnguyenworkstation/FP1/blob/master/images/result.png)
 
