@@ -16,9 +16,9 @@ What I did:
 		(circle 50 "solid" "blue"))
 	```
 
-	- I define a function called "initscreen" to initialize a screen (500x500) and animate the ball with the equation x and y provided to make the "Cardioid" animation which is provided in the wiki page.
+- I define a function called "initscreen" to initialize a screen (500x500) and animate the ball with the equation x and y provided to make the "Cardioid" animation which is provided in the wiki page.
 
-	![alt tag](https://github.com/hnguyenworkstation/FP1/images/function.png)
+![alt tag](https://github.com/hnguyenworkstation/FP1/images/function.png)
 
 	```
 	(define (initscreen height)
@@ -28,14 +28,14 @@ What I did:
 	               (empty-scene 500 500)))
 	```
 
-	- I define a function bounding which will decrease 5px of the position of the height by each milisecond.
+- I define a function bounding which will decrease 5px of the position of the height by each milisecond.
 
 	```
 	(define (bounding height)
   		(- height 5))
   	```
 
-	- Using the defined function big-bang in 2htpd universe to make run Cardioid animation for 5000/100 seconds (it will also stop when height reaches 0).
+- Using the defined function big-bang in 2htpd universe to make run Cardioid animation for 5000/100 seconds (it will also stop when height reaches 0).
 
 	```
 	(big-bang 500
@@ -45,5 +45,6 @@ What I did:
     ```
 
 ###### RESULT SCREENSHOT
-	![alt tag](https://github.com/hnguyenworkstation/FP1/images/result.png)
+
+![alt tag](https://github.com/hnguyenworkstation/FP1/images/result.png)
 
