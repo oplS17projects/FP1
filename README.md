@@ -60,7 +60,7 @@ Base URL for API: [CLICK-HERE]
 <img src="./diagram.png" alt="Request_Diagram">
 
 <!-- Links -->
-[CLICK-HERE]: https://github.com/oplS17projects/FP-Schedule
+[CLICK-HERE]: https://ballotyelp.herokuapp.com
 
 
 
