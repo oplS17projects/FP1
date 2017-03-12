@@ -1,4 +1,4 @@
-## My Library: (library name here)
+## My Library: (graphics/value-turtles)
 My name: Tim Larocque
 
 * a narrative of what you did
