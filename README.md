@@ -1,4 +1,4 @@
-## My Library: rsound
+## My Library: RSound
 My name: Samuel Toups
 
 Write what you did!
