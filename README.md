@@ -10,7 +10,7 @@ Where to Find Code: This repository located in the above github. <br>
 What I did: <br>
 <br>
 I started off by opening the document recommended and scrolling through till I seen Web Applications In Racket. A light bulb popped 
-in my head instantly because I love to create and design websites! I followed this neat little tutorial that was listed and understood some of the code provided through the use of the library. Below is an example of the code:<br>
+in my head instantly because I love to create and design websites! I followed this neat little tutorial that was listed and understood some of the code provided through the use of the library. To Summarize what I actually did I would describe it like this: I followed some tutorial examples and set out to provide a few key components from the idea's behind Web Design. I created a Title / Header for the tab of the page, a paragraph to introduce the page as well as a link to some other pages I have created, and ended it with a list of my favorite activities! <br>  Below is an example of the code:<br>
 <br>
 ****************** START OF CODE SAMPLE *****************************<br>
 <br>
