@@ -2,8 +2,11 @@
 My name: Chuong Vu
 
 https://docs.racket-lang.org/teachpack/2htdpimage.html
+
 http://docs.racket-lang.org/picturing-programs/
+
 I first want to play around with image which let me convert normal photo picture and convert it to cartoon that based on the RGB value. Here the most basic example how the library works.
+
 ```
 #lang racket
 
@@ -18,6 +21,7 @@ I first want to play around with image which let me convert normal photo picture
 ```
 
 After I got the library working, I started to read some example from the racket website and play around with it to get the idea how it read pixel by pixel and what it return. I choice a small photo that I took it from my camera and tried to load in racket and generate a list from racket. Here is the sample code that I was playing around with.
+
 ```
 #lang racket
 
