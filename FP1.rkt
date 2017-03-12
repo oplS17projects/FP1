@@ -1,7 +1,5 @@
 #lang racket
 
-;; for bitmap
-(require 2htdp/image)
 ; for get-pixel-color
 (require picturing-programs)
 

@@ -1,33 +1,27 @@
-## My Library: 2htdp/image and picturing-programs
+## My Library: picturing-programs
 My name: Chuong Vu
-
-https://docs.racket-lang.org/teachpack/2htdpimage.html
 
 http://docs.racket-lang.org/picturing-programs/
 
 I first want to play around with image which let me convert normal photo picture and convert it to cartoon that based on the RGB value. Here the most basic example how the library works.
 
-```
+```racket
 #lang racket
 
-;; for bitmap
-(require 2htdp/image)
-; for get-pixel-color
 (require picturing-programs)
+
 ;; load the image
 (define imgtest (bitmap "test.png"))
+
 ;; getpixel from image at x and y coordinates
 (get-pixel-color 1 1 imgtest)
 ```
 
 After I got the library working, I started to read some example from the racket website and play around with it to get the idea how it read pixel by pixel and what it return. I choice a small photo that I took it from my camera and tried to load in racket and generate a list from racket. Here is the sample code that I was playing around with.
 
-```
+```racket
 #lang racket
 
-;; for bitmap
-(require 2htdp/image)
-; for get-pixel-color
 (require picturing-programs)
 
 ;; read the image
