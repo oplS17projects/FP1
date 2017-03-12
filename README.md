@@ -14,7 +14,8 @@ I then chose a background that emulated that of the original game, and had all i
 (overlay (beside (beside BALL1 BALL2) BALL3) DUNGEON)
 ```
 After completing this task, I decided that I would try to animate this feature, seeing that this is a flash game that most 
-definately needs to show changes in frames. 
+definately needs to show changes in frames. The balls in this frame al fall towards the floor, like they do in the actual game.
+I included two images to show that the balls do move down the window. This was done using the universe library of the 2htdp.
 ```
 (define (base_scene height)
   (underlay/xy DUNGEON 500 height (beside BALL3 (beside BALL1 BALL2))))
