@@ -32,6 +32,8 @@ This will create the turtle for drawing
 `(move-offset 0 -100)` move the turtle up 100 pixel **without draw**.
 `(draw-offset -100 200)` move the turtle to the left 100 pixel and down 200pixel and **draw it**.
 
+![p2](p2.png)
+
 # More advance lib
 ### Library [graphics/turtle-examples](http://docs.racket-lang.org/turtles/Traditional_Turtles.html#%28mod-path._graphics%2Fturtle-examples%29)
 
@@ -47,6 +49,8 @@ This will create the turtle for drawing
 ```
 `(turn 90)` Turn the turtle 90 degree counter clockwise. The purple of this is to make top of triangle is pointing upward.
 `(regular-poly 3 200)` Draw 3 side with 200 pixels each sides.
+
+![p3](p3.png)
 
 ### Sierpinski Triangle
 There are multiple way of doing this. 
