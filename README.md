@@ -36,44 +36,85 @@ There's a player class with a main player (player 1) who can move left and right
 (define p1-sprite (bitmap "Kirby_Sprite.png")) ; image used for the player, for now just a random kirby sprite.
 ```
 
-I made a background image just a random background that looked nice I found online, not sure if it will be kept
+I loaded a background image, just a random background that looked nice I found online. Not sure if it will be kept
 
 ```racket
 (define background (bitmap "background.jpg"))
 ```
+![background](https://raw.githubusercontent.com/mdanino94/FP1/master/background.jpg)
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+I also added a hook class which will be a hookshot that is used to pop the bubbles, which is just a default triangle type in the image library.
+```racket
+(define (hook x y shooting) ; will eventually be second object that needs an x and y since it will be shot to pop bubbles
+  (define orig-y y) ;save what to reset y value to when it reaches the top of the screen
+  (define (dispatch comm)
+    (cond [(equal? comm 'x) x]
+          [(equal? comm 'y) y]
+          [(equal? comm 'is-shooting?) (if (equal? shooting 'no) #f #t)]
+          [(equal? comm 'start-shooting) (if (equal? shooting 'no) (set! shooting 'yes) "shooting")] ; need to debug this, if statement doesn't seem to read properly
+          [(equal? comm 'stop-shooting) (set! shooting 'no)]
+          [(equal? comm 'update) (begin (set! x (p1 'position)) (set! y (- y 10)))]
+          [(equal? comm 'reset) (begin (set! y orig-y) (set! shooting 'no))]
+          [else (error "hook: unknown command --" comm)]))
+  dispatch)
+  
+  ...
+  
+(define my-hook (hook 50 900 'no))
+(define my-hook-sprite (triangle 20 "solid" "red"))
+```
+I couldn't figure out if there was a way to draw seperate images/sprites to the screen at once yet, so I just loaded the player and hook sprite as a single image using the overlay function
 
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
+```racket
+(define (update-screen x)
+  (underlay/xy background (p1 'position) ; x val
+               (- (my-hook 'y) 10) (overlay/offset my-hook-sprite 0 50 p1-sprite)))
+```
 
-Code should be delivered in two ways:
+and an event handler for keypresses, in this case left, right, and space bar. left and right move left/right 5 pixels each time, space bar "shoots" the sprite to the top of the screen, resetting when it reaches the top.
+```racket
+;handle key events
+(define (change w a-key)
+  (cond [(key=? a-key "left") (p1 'move-left)]
+        [(key=? a-key "right") (p1 'move-right)]
+        [(key=? a-key " ") (my-hook 'start-shooting)]
+        [else w]))
+```
 
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
+"start shooting" just updates the sprite's y value each tick, setting it to 10 pixels higher than the previous time. the player can't "shoot" the sprite again until it's been reset. this is checked with the "shooting" bool in the hook class.
 
-Ask questions publicly in the email group.
+```racket
+(define (hook x y shooting) ; will eventually be second object that needs an x and y since it will be shot to pop bubbles
+  (define orig-y y) ;save what to reset y value to when it reaches the top of the screen
+  (define (dispatch comm)
+    (cond ...
+    [(equal? comm 'start-shooting) (if (equal? shooting 'no) (set! shooting 'yes) "shooting")] ; need to debug this, if statement doesn't seem to read properly
+          [(equal? comm 'stop-shooting) (set! shooting 'no)]
+          [(equal? comm 'update) (begin (set! x (p1 'position)) (set! y (- y 10)))]
+          [(equal? comm 'reset) (begin (set! y orig-y) (set! shooting 'no))])))
 
-## How to Prepare and Submit this assignment
+...
 
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+(define (update-sprites x) (if (and (my-hook 'is-shooting?) (> (my-hook 'y) 10)) ; if the hook is shooting and it hasn't reached the top of the screen yet
+                               (my-hook 'update) ; keep moving it up 10 pixels
+                               (my-hook 'reset))) ; reset to original place
+```
+it was rendered by the big-bang function based off of an example found at the bottom of the universe page https://docs.racket-lang.org/teachpack/2htdpuniverse.html
 
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
+```racket
+(big-bang 'world0
+          (on-tick update-sprites); figured out what this does. haven't updated my .rkt file yet for this comment, it can just be used to update class types, but won't re-draw what is shown on the screen. leaving that for "update-screen" call.
+          (on-key change) ; check for key events (left, right or space)
+          (to-draw update-screen)) ; update sprite (sprites eventually, hopefully
+```
 
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+screenshots of FP1.rkt running
+
+![on-load](https://github.com/mdanino94/FP1/blob/master/on-load.png)
+
+![moving around](https://github.com/mdanino94/FP1/blob/master/moving%20around.png)
+
+![mid-shoot](https://github.com/mdanino94/FP1/blob/master/mid-shoot.png)
+
+
 
