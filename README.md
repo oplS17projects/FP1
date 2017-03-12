@@ -32,4 +32,4 @@ Then, a tail-recursive function is used to play the song.  The function makes us
 
 It increments a count with an interval slightly longer than the duration of the note so that the notes play with a small pause between each one.
 
-The `experiment.rkt` file contains a sample song which plays when the program is run.
+The [`experiment.rkt`](https://github.com/doug-salvati/FP1/blob/master/experiment.rkt) file contains a sample song which plays when the program is run.
