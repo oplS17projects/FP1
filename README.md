@@ -40,6 +40,7 @@ datatype. This the below screen shot pic is the output of the above code.
                                         "Hello!" (br) "Good Bye!")))))
 ```
 
+
 write-xml/content function writes document content to the given output port. empty-tag-shorthand parameter that determines whether
 output functions should use the <‹tag›/> tag notation instead of <‹tag›></‹tag›> for elements that have no content. The html-empty-tags
 constant contains the W3 consortium’s recommended list of XHTML tags that should use the shorthand. This list is the default value of
@@ -49,4 +50,4 @@ empty-tag-shorthand.
    
 Thus, The xml library contains functions for parsing and generating XML. XML can be represented as an instance of the document
 structure type, or an X-expression.
-    
+
