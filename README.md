@@ -47,7 +47,7 @@ Other graphs that can be produced include:
   (send xlsx add-chart-serial! #:sheet_name "BarChart" #:data_sheet_name "DataSheet" #:data_range "B3-D3" #:y_topic "GOOG")
   (send xlsx add-chart-serial! #:sheet_name "BarChart" #:data_sheet_name "DataSheet" #:data_range "B4-D4" #:y_topic "MSFT")
 ```
-![Bar Chart] (https://github.com/simthyrearch/FP1/blob/master/BarChart.png
+![Bar Chart] (https://github.com/simthyrearch/FP1/blob/master/BarChart.png)
 
 # AAPL Pie Chart
 ```racket
