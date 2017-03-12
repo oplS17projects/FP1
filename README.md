@@ -1,10 +1,6 @@
 ## My Library: (2htdp/image), (2htdp/universe)
 My name: **Molly McGuire**
 
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you 
 The goal of my project is to simulate the classic flash game, Bubble Trouble 2, thourgh using simulated physics, a graphic user
 interface, and frame updates. In this exploration, I gravitated towards making the basics for this game. The game consists of
 mulitcolored balls that vary in size when interacted with. I decided to use the image library from 2htdp do to so.
