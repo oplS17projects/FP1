@@ -35,7 +35,7 @@ I use it to plot the rec in "P", and two recs in "L"
 
 `(isoline (lambda (x y) (sqrt (+ (sqr (+ x 7)) (sqr (+ y 1))))) 2.5 -11 9 -11 9 #:color "green" #:width 20))`
 
-Isoline is the function to plot the circle, which using the math function (x-a)^2 + (x-b)^2 = r^2
+Isoline is the function to plot the circle, which using the math function (x-a)^2 + (y-b)^2 = r^2
 
 I use it to plot the "O"
 
