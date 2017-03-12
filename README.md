@@ -18,9 +18,9 @@ The main difference is that I had to read it from a file and otuput it to a file
 
 Ok so that wasn't super exciting or hard, so I had another challenge, which was to have a text file with a list of text files and output them to a webpage. I concatinated the text files into appropriate html and then what I thought was a correct xexpr santax, but I couldn't figure it out. String->xexpr gave an error that I annotated in my [main.rkt](main.rkt) file.
 
-So I went back to the working markdown file to webpage code and it works. Everything that failed is still in the directory.
+So I went back to the working markdown file to the webpage and hopefully I'll find more resources of how to do xexpr 's correctly.
 
 DrRacket Output and Firefox screenshots:
 
-![Racket image](racketoutput.png?raw=true "test image")
-![Firefxo image](browser.png?raw=true "test image")
+![Racket image](racketoutput.png?raw=true "racket output")
+![Firefxo image](browser.png?raw=true "firefox")
