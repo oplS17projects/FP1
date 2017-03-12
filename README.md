@@ -87,7 +87,7 @@ Lastly I created a function where a user could input a 3D function with an x and
           #:x-label "x" #:y-label "y" #:z-label "My function"))
 ```
 
-![output](/plotting2graphs.png?raw=true "Plotting 2 Graphs")
+![output](/Plotting2graphs.png?raw=true "Plotting 2 Graphs")
 Write what you did!
 Remember that this report must include:
 
