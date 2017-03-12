@@ -27,4 +27,4 @@ extracted from websites, and I think this while loop will come in very handy. He
 This snippet basically prints out Hello World then asks the user if he/she wants to continue seeing it. Then it uses regular expression to sort out the answer to yes/no
 and loop the program accordingly.
 
-![Alt text](FP1/Untitled.png?raw=true "Screenshot")
+![alt text](https://image.ibb.co/gsn0GF/Untitled.png "Screenshot")
