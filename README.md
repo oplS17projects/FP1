@@ -5,7 +5,7 @@
 
 This project I will be exploring turtles lib. The plan is to draw something cool with this lib. EX: sierpinski triangle
  
-# Beginer level.
+# Starter lib
  
 ```racket
 #lang racket
