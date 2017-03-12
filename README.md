@@ -25,4 +25,4 @@ I saw the example from the library and the API so I can modify the color, size a
 I draw a lambda symbol and a blue record icon and modify them try to make a DrRacket Logo. Then I want to see how the order of bitmap
 will make difference on the order of drawing.
 
-![Own image](/testimage.png?raw=true "test image")
+![Own image](https://github.com/Iris-W/FP1/blob/master/Own%20icon%20test.png?raw=true)
