@@ -15,6 +15,7 @@ This project I will be exploring turtles lib. The plan is to draw something cool
 (turtles)
 ```
 This will create the turtle for drawing
+
 ![p1](p1.png)
 
 ```racket
@@ -68,8 +69,9 @@ There are multiple way of doing this.
 ```
 
 ![p4](p4.png)
-But doing this is not efficient because it will go through a lot the recursion
 
+But doing this is not efficient because it will go through a lot the recursion
+2.
 ```racket
 #lang racket
 
