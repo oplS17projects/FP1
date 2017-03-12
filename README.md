@@ -1,19 +1,35 @@
 # Final Project Assignment 1: Exploration (FP1)
 
-## My Library: (library name here)
+## My Library: RSound
 My name: Doug Salvati
 
-Write what you did!
-Remember that this report must include:
+First, I created some functions to create notes.  The user specifies a note and octave to `make-note` and the function calculates the frequency of this note.
+From here, the user can play the note using `seeAndHear`.  This will also use the calculated frequency to visualize the note using the `plot` library.  Here is a sample interactive session:
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+![sample]()
 
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
+The function also plays the note using the `play` function from `rsound`.  To do this, it first uses the `create-tone` utility to create an `rsound` object:
+```
+;; create note at 10% volume with duration of 50000
+(play (make-tone (pitch n) .1 50000))
+```
 
-Code should be delivered in two ways:
+The biggest compontent is to create a song and play it.  A song is simply created as a list of notes:
+```
+(define (make-song . notes) notes)
+```
+Then, a tail-recursive function is used to play the song.  The function makes use of the `rsound` streams, traversing the list and enqueuing each to the stream:
+```
+(define (playSong s)
+  (define stream (make-pstream))
+  (define (iter s cnt)
+    (if (null? s)
+        "everything is queued up!"
+        (begin (pstream-queue stream (make-tone (pitch (car s)) .1 20000) cnt)
+               (iter (cdr s) (+ cnt 21000)))))
+  (iter s 0))
+  ```
 
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
+It increments a count with an interval slightly longer than the duration of the note so that the notes play with a small pause between each one.
+
+The `experiment.rkt` file contains a sample song which plays when the program is run.
