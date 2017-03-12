@@ -39,8 +39,9 @@ Here are two tests written for the accumulates above:
  "Bad list adder not working")
  ```
  The first test succeeds and reports nothing; the second test fails and produces the following output (shown both in a screenshot and a code block):
+
  
- ```
+```
 --------------------
 FAILURE
 name:       check-equal?
@@ -53,6 +54,8 @@ message:    "Bad list adder not working"
 . Check failure
 --------------------
 ```
+The failue message gives you a lot of useful information: among other things, it gives you the expected and actual values produced, what line in your test file failed, and, if one was included, the message from the test.
+
 A more advanced method is to group a bunch of tests together in a test-case form.  It allows us to end testing as soon as one condition fails; this is useful in a situation where subsequent tests will not pass if the previous ones have failed.  The following example tests our make-sum function from exercise 2-58: (make-sum shown first, then the test)
 ```racket
 (define (make-sum a1 a2)
@@ -101,6 +104,6 @@ message:    "Incorrect car for make-sum-good"
 . Check failure
 --------------------
 ```
-What's important to notice from this error is that, once the test fails at one spot, the rest don't even execute.  This saves time and eliminates needless error messages.
+What's important to notice from this error is that, once one test fails, the rest don't even execute.  This saves time and eliminates needless error messages.
 
 I believe RackUnit is a useful library to explore for this assignment and that it will also be useful for the class project because it makes debugging large chunks of code easier and faster.
