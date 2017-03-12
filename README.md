@@ -1,98 +1,49 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
 
-Please choose libraries that you think you might be interested in using in your final project.
+## My Library: Plot
+My name: Ruowei Zhang
 
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
-#lang racket
+I look through the libraries and have interests in the Plot library. This library has functions and examples about how to design 2D or 3D models. After reading the examples, I decide to plot my own image. I use three functions to finish my FP1. They are polar, rectangles and isoline.
 
-(require net/url)
+See screen shots from http://docs.racket-lang.org/plot/renderer2d.html
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
+![polarcenter](/polarcenter.png?raw=true "polarcenter")
 
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
+![rec](/rec.png?raw=true "rec")
 
-You can still use these in your project, but you must explore different libraries for this assignment.
+![isoline](/isoline.png?raw=true "isoline")
 
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
 
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
+To plot "OPL", I need to divide the letters into shapes that can be easily plotted. "O" can be a circle. "P" has a rectangle plus a circle. "L" has two combined rectangles.
 
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
+The code below shows part of the plot.
 
-This file IS your report for the assignment, including code and your story.
+`(polar (lambda (theta) 1.5) #:color "pink" #:width 18) `
 
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
+Polar is the function to plot circles with the center (0,0). 
 
-(require net/url)
+I use it to ploy the circle in "P".
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
 
-## My Library: (library name here)
-My name:
+`(rectangles (list (vector (ivl -2 -1) (ivl -4 2))) #:color "pink" #:line-color "pink")`
 
-Write what you did!
-Remember that this report must include:
+Rectangles is the function to plot rectangles. Vector takes two parameters, the first one is the horizontal side of the rectangle, and the second one is the vertical side of the rectangle. With these two sides, the function can plot the rectangle.
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+I use it to plot the rec in "P", and two recs in "L"
 
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
+`(isoline (lambda (x y) (sqrt (+ (sqr (+ x 7)) (sqr (+ y 1))))) 2.5 -11 9 -11 9 #:color "green" #:width 20))`
 
-Code should be delivered in two ways:
+Isoline is the function to plot the circle, which using the math function (x-a)^2 + (x-b)^2 = r^2
 
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
+I use it to plot the "O"
 
-Ask questions publicly in the email group.
 
-## How to Prepare and Submit this assignment
 
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+Here is the output:
 
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
+![rzopl](/OPLFP1.png?raw=true "rzopl")
 
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+
 
