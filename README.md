@@ -1,12 +1,12 @@
 # Final Project Assignment 1: Exploration (FP1)
 
-## My Library: RSound
+## My Library: [RSound](https://docs.racket-lang.org/rsound/)
 My name: Doug Salvati
 
 First, I created some functions to create notes.  The user specifies a note and octave to `make-note` and the function calculates the frequency of this note.
 From here, the user can play the note using `seeAndHear`.  This will also use the calculated frequency to visualize the note using the `plot` library.  Here is a sample interactive session:
 
-![sample]()
+![sample](https://github.com/doug-salvati/FP1/blob/master/output.png)
 
 The function also plays the note using the `play` function from `rsound`.  To do this, it first uses the `create-tone` utility to create an `rsound` object:
 ```
