@@ -5,8 +5,8 @@ however I think I will be using a lot for this project, is the while loop librar
 loop operates, it will be a breeze using this. For the main project I was thinking of making an application that could continuously update a database using the information
 extracted from websites, and I think this while loop will come in very handy. Here is a snippet that I created using the while loop.
 
+```
 #lang racket/base
-
 
  (require dyoo-while-loop)
  
@@ -22,7 +22,7 @@ extracted from websites, and I think this while loop will come in very handy. He
      (continue))
    (when (regexp-match #px"yes" input)
      (break)))
-
+```
 	 
 This snippet basically prints out Hello World then asks the user if he/she wants to continue seeing it. Then it uses regular expression to sort out the answer to yes/no
 and loop the program accordingly.
