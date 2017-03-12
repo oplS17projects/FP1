@@ -21,13 +21,10 @@ I don't know what images I could include, as the primary output of my code is so
 (while #t (set! FREQUENCY (shift-freq i)) (set! i (+ i 1)) (println i) (println FREQUENCY) (pstream-queue shift-stream (build-sound FRAME-RATE sine-tone) (pstream-current-frame shift-stream)) (sleep 1))
 ```
 
-Write what you did!
-Remember that this report must include:
+
 
 * output from your code demonstrating what it produced
 * at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
 
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
