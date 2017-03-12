@@ -1,6 +1,8 @@
 #lang racket
 
+;; for bitmap
 (require 2htdp/image)
+; for get-pixel-color
 (require picturing-programs)
 
 ;; read the image
@@ -25,8 +27,13 @@
 ;; (get-pixel-color x y pic) where x = width and y = height
 ;; color return red/green/blue/alpha
 (define pixlist
-  (list (list (get-pixel-color 1 1 imgtest) (get-pixel-color 1 2 imgtest))
-        (list (get-pixel-color 2 1 imgtest) (get-pixel-color 2 2 imgtest))
-        (list (get-pixel-color 450 560 imgtest) (get-pixel-color 455 560 imgtest))
+  (list (list (get-pixel-color 1 1 imgtest) (get-pixel-color 1 2 imgtest) (get-pixel-color 1 3 imgtest) (get-pixel-color 1 4 imgtest))
+        (list (get-pixel-color 300 148 imgtest) (get-pixel-color 300 149 imgtest) (get-pixel-color 300 150 imgtest))
         ))
-pixlist
+
+;; from pixel to bitmap
+(scale 30 (color-list->bitmap (car pixlist) 4 1))
+(scale 30 (color-list->bitmap (cadr pixlist) 3 1))
+(define colortest (make-color 150 147 146))
+
+

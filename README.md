@@ -1,98 +1,74 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
-
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
-
-Please choose libraries that you think you might be interested in using in your final project.
-
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
-
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
-## My Library: (library name here)
+## My Library: 2htdp/image and picturing-programs
 My name: Chuong Vu
 
-Write what you did!
-Remember that this report must include:
+https://docs.racket-lang.org/teachpack/2htdpimage.html
+http://docs.racket-lang.org/picturing-programs/
+I first want to play around with image which let me convert normal photo picture and convert it to cartoon that based on the RGB value. Here the most basic example how the library works.
+```
+#lang racket
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+;; for bitmap
+(require 2htdp/image)
+; for get-pixel-color
+(require picturing-programs)
+;; load the image
+(define imgtest (bitmap "test.png"))
+;; getpixel from image at x and y coordinates
+(get-pixel-color 1 1 imgtest)
+```
 
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
+After I got the library working, I started to read some example from the racket website and play around with it to get the idea how it read pixel by pixel and what it return. I choice a small photo that I took it from my camera and tried to load in racket and generate a list from racket. Here is the sample code that I was playing around with.
+```
+#lang racket
 
-Code should be delivered in two ways:
+;; for bitmap
+(require 2htdp/image)
+; for get-pixel-color
+(require picturing-programs)
 
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
+;; read the image
+(define imgtest (bitmap "test.png"))
 
-Ask questions publicly in the email group.
+;; get image height
+(define img-height (image-height imgtest))
 
-## How to Prepare and Submit this assignment
+;; get image width
+(define img-width (image-width imgtest))
 
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+;; example from racket website
+(define (near-pixel x y)
+           (get-pixel-color (+ x -3 (random 7))
+                            (+ y -3 (random 7))
+                            imgtest))
+(define fuzz
+    (build-image img-width img-height near-pixel))
+                          
+;; read pixel-by-pixel to list
+;; sample picture height = 561 and width = 460
+;; (get-pixel-color x y pic) where x = width and y = height
+;; color return red/green/blue/alpha
+(define pixlist
+  (list (list (get-pixel-color 1 1 imgtest) (get-pixel-color 1 2 imgtest) (get-pixel-color 1 3 imgtest) (get-pixel-color 1 4 imgtest))
+        (list (get-pixel-color 300 148 imgtest) (get-pixel-color 300 149 imgtest) (get-pixel-color 300 150 imgtest))
+        ))
 
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
+;; from pixel to bitmap
+(scale 30 (color-list->bitmap (car pixlist) 4 1))
+(scale 30 (color-list->bitmap (cadr pixlist) 3 1))
+(define colortest (make-color 150 147 146))
 
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+```
+
+
+## Example Picture
+
+
+This is the sample output. But not what I really looking for. The image still not look like the cartoon so I will do more research on it.
+
+
+## 
+
+I still got a trouble with trying to get and change the value red\green\blue from RGB `(color 150 147 146 255)`. There are a method that create an object `make-object color%` from racket but I still not sure how to use it and what is the best way to implementation the object.
+
+
 
