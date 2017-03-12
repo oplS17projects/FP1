@@ -28,7 +28,9 @@ Remember that this report must include:
 * highlights of code that you wrote, with explanation
 * output from your code demonstrating what it produced
 * at least one diagram or figure showing your work
-I saw the example from the library and the API so I can modify the color, size and material etc. I draw a lambda symbol and a blue record icon and modify them try to make a DrRacket Logo. Then I want to see how the order of bitmap will make difference on the order of drawing.
+I saw the example from the library and the API so I can modify the color, size and material etc.
+I draw a lambda symbol and a blue record icon and modify them try to make a DrRacket Logo. Then I want to see how the order of bitmap
+will make difference on the order of drawing.
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
 ![test image](/testimage.png?raw=true "test image")
