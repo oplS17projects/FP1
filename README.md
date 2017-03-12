@@ -25,6 +25,6 @@ definately needs to show changes in frames.
 ```
 
 The following was produced: 
-![dungeon](/dungeon.png?raw=true "dungeon")
+![output](/output.png?raw=true "output")
  
 This background image was found at: https://www.pinterest.com/sashabilton/dwimmermount/
