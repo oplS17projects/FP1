@@ -65,14 +65,23 @@ After I got the library working, I started to read some example from the racket 
 
 
 ## Example Picture
-
+![alt text][output]
 
 This is the sample output. But not what I really looking for. The image still not look like the cartoon so I will do more research on it.
 
 
-## 
+## Problems
 
 I still got a trouble with trying to get and change the value red\green\blue from RGB `(color 150 147 146 255)`. There are a method that create an object `make-object color%` from racket but I still not sure how to use it and what is the best way to implementation the object.
 
 
+<!-- Links -->
+[schedule]: https://github.com/oplS17projects/FP-Schedule
+[markdown]: https://help.github.com/articles/markdown-basics/
+[forking]: https://guides.github.com/activities/forking/
+[ref-clone]: http://gitref.org/creating/#clone
+[ref-commit]: http://gitref.org/basic/#commit
+[ref-push]: http://gitref.org/remotes/#push
+[pull-request]: https://help.github.com/articles/creating-a-pull-request
+[output]: https://github.com/vdc1703/FP1/blob/master/OutPut.PNG
 
