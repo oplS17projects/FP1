@@ -40,7 +40,7 @@ Here are two tests written for the accumulates above:
  ```
  The first test succeeds and reports nothing; the second test fails and produces the following output (shown both in a screenshot and a code block):
 
-![Alt text](/FP1/rack-unit.png?raw=true "Optional Title")
+![rack-unit](rack-unit.png)
  
 ```
 --------------------
