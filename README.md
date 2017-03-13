@@ -16,17 +16,22 @@ Some demonstration of what my function did:
 This array can now be used with other library functions included in the math/array library
 
 ```
-;my-array takes a number of elements to be in the math array and a function to be applied to each element in the array
+;my-array takes a number of elements to be in the math 
+;array and a function to be applied to each element in the array
 (define (my-array numElements func)
+
 ;my-array-helper creates a list with the number of elements starting at 0
   (define (my-array-helper count)
-  ; the final call in the body which uses array-map built in function in the library, list->array to convert
-  ;a list to a math array and then finally we get the array with the function applied to each element
+  
+  ; the final call in the body which uses array-map built 
+  ;in function in the library, list->array to convert
+  ;a list to a math array and then finally we get the 
+  ;array with the function applied to each element
   (array-map func (list->array (my-array-helper 0)))
 
 ```
 
-![test image](/testimage.png?raw=true "test image")
+![FP1](/FP1.jpg?raw=true "FP1")
 
 
 Ask questions publicly in the email group.
