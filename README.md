@@ -51,6 +51,7 @@ I learned that slide show can use a list or lists. Also, what is a presentation 
    'next
    (t (number->string n))) 
 ```
+![test image](/slide2.png?raw=true "test image")
 
 ## How to Prepare and Submit this assignment
 
