@@ -29,4 +29,5 @@ The code outputs the result of the calculations.
 * (posn-rotate-origin-ccw-90 (posn 40 40)) = (-40, 40)
 * (posn-rotate-ccw (posn 40 40) 180 (posn 20 20)) = (60, 60)
 
+Below is a picture of all the code output listed above as well as some extra code I used for testing.
 ![output](exp1_output.png)
