@@ -17,6 +17,7 @@ in my head instantly because I love to create and design websites! I followed th
  <p> #lang web-server/insta </p> <br>
 ;;Library used to create the websites<br>
 <br>
+```
 (define (start request)<br>
   ;;Sends a request to your web browser<br>
   <br>
@@ -27,6 +28,7 @@ in my head instantly because I love to create and design websites! I followed th
    <br>
    ## Anything you wish to add to the page goes here! You will see more cool stuff in my full example of the code! ##<br>
    )))<br>
+   ```
    <br>
    <br>
    ****************** END OF CODE SAMPLE **********************************<br>
