@@ -14,7 +14,9 @@ I spent a lot of time trying to adjust the server root with this to point to a c
 
 I ended up down a rabit hole in material I believed created by Lowell's very own Jay McCarthy:
 [Relavent Posting][Relavent Posting]
+
 [Racket Documentation][Racket Documentation]
+
 [Racket Documentation I could not follow][Racket Documentation I could not follow]
 
 ![success](screenshot.png)
