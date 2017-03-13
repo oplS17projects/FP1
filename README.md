@@ -1,47 +1,11 @@
-## My Library: (library name here)
+My Library: simple-qr
 My name: Mohammed Nayeem
+I chose to explore the simple-qr library. QR code because takes some text and scrambles it into a pattern. This pattern can be then interpreted by a QR reader which can then give back when your scrambled text is. This text can be a link or a phrase. Using the library, I was able to change the text, change what is embedded in the qr code, and change the size of the code. I have two images that I tested out. The first image has the phrase “Welcome to OPL”. 
+(qr-code "Welcome to OPL" "opl.png")
+The second code has an URL to my github.
+This line of code just sets the text to the link of “Welcome to OPL” and sets the output image to opl.png. The size is given an default value in the background.
+(qr-code "https://github.com/mohammednayeem" "github.png" #:module_width 10)
+This line of code just sets the text to the link of my github, sets the output image as github.png, and changes the size of the image.
 
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
-
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
-
+This is what the end result looks like when the QR code is printed with a larger size.
+![GitHub Image](/github.png?raw=true "GitHub Image")
