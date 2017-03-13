@@ -1,0 +1,10 @@
+#lang racket
+(require html-writing)
+
+(write-html
+ '((html (head (title "My Title"))
+         (body (@ (bgcolor "white"))
+               (h1 "My Heading")
+               (p "This is a paragraph.")
+               (p "This is another paragraph."))))
+ (current-output-port))
