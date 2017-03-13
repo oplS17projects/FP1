@@ -1,104 +1,57 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
+# FP1
+## My Library: graphics/turtles
+My name: David Caizzi
 
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
+For my exploration1, I decided to take a look at the traditional turtles library. This is a library that provides basic turtle functionality. It lets you move the turtle, draw with the turtle, rotate the turtles, and duplicate the turtles. 
+Using turtles, I created a program that sets up a coordinate plane and allows you to draw some basic shapes within it. Using turtles isn't the most efficient way to draw shapes and stuff on a coordinate plane, but it gave me experience using turtles.
 
-Please choose libraries that you think you might be interested in using in your final project.
+I started out by making a procedure that draws a coordinate plane.
+![Coordinate Plane](/grid.jpg?raw=false "Coordinate Plane")
 
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
+The procedure draws the x-axis and the y-axis and then calls a recursive procedure that draws notches on the axes at user-chosen increments.
+This code is the procedure that draws the notches. It walks itself down the axis and turns and draws at regular increments.
 ```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
+(define (draw-notches x size)
+  (if (> 0 (- size x)) 0
+      (begin
+        (move x)
+        (tprompt
+         (tprompt
+          (turn 90)
+          (draw 7))
+         (turn -90)
+         (draw 7))
+        (draw-notches x (- size x)))))
 ```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
+Once the coordinate plane was drawn, I implemented a few procedures to draw some basic shapes.
+![Shapes](/shapes.jpg?raw=false "Shapes")
 
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
+This was pretty straightforward and consisted of telling the turtle to move to a user-specified location and draw stuff depending on the size the user input.
+The code for my rectangle procdure is pretty much what you'd expect. It moves itself to the position of the first corner and then draws the length of a side, turns 90 degrees, and then does it again. It does this 4 times because suprisingly, rectangles have 4 sides.
+```racket
+(define (draw-rect x1 y1 x2 y2)
+  (tprompt
+   (move x1)
+   (turn 90)
+   (move y1)
+   (draw (- y2 y1))
+   (turn -90)
+   (draw (- x2 x1))
+   (turn -90)
+   (draw (- y2 y1))
+   (turn -90)
+   (draw (- x2 x1))))
 ```
-#lang racket
+![Octagon](/octagon.jpg?raw=false "Octagon")
 
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
+Lastly, I decided to get a little wild and experiment with some recursion. I implemented a procedure that uses tail-recursion to draw an octagon. By tweaking the recursion depth and the angles it turns at, you can make it draw any regular polygon.
+```racket
+(define (recursive-octagon)
+  (define (oct-h x)
+    (if (= x 0) 0
+        (begin
+          (draw 50)
+          (turn 45)
+          (oct-h (- x 1)))))
+  (oct-h 8))
 ```
-
-## My Library: (library name here)
-My name: **put your real name here**
-
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
-
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
-
