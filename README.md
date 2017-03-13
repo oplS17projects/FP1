@@ -1,26 +1,6 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
-```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
 ## My Library: slideshow
 My name:Emmanuel Rosario
 
