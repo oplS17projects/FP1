@@ -1,5 +1,5 @@
 Source code:
-
+```racket
 #lang racket
 
 (require 2htdp/image)
