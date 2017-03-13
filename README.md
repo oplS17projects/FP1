@@ -43,7 +43,8 @@ outputs:
 "this is a test and s"
 ```
 showing that the first "t" seen by this method is the last one in the string.
-use of the "and" and "or" procedures allows for different patterns to be tested in the same code, for example:
+
+Use of the "and" and "or" procedures allows for different patterns to be tested in the same line of code, for example:
 
 ```racket
 (match foo
