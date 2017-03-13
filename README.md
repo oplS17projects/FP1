@@ -66,17 +66,6 @@ The following is the output of my test file within the play ground for the progr
 #<procedure:stream-time>
 #<procedure:stream-time>
 
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
 ![rsound code and test](/rsound.png?raw=true "rsound code and test")
 
