@@ -8,7 +8,20 @@ My name: Scott Mello
 I used the net/smtp library as well a few others, such as net/head, and openssl.
 The main purpose of what i did was to send email through Gnail using racket. 
 The user is asked to input their Gmail and password, then it sends a test
-email to their account. The following is the main procedure i used.
+email to their account. The following are my defines and the main procedure 
+i used.
+
+(print "Enter Gmail")
+(define user (read-line(current-input-port) 'any))
+(print "Enter Password")
+(define pw (read-line (current-input-port) 'any))
+
+(define To user)
+(define From To)
+(define Body "This a test for PS1")
+(define Subject "Library Fun")
+(define server-address "smtp.gmail.com")
+(define port-no 587)
 
 (smtp-send-message	 	
         server-address	 	 	 	 
@@ -22,6 +35,7 @@ email to their account. The following is the main procedure i used.
  	 	#:tcp-connect connect	 	 	 	 
  	 	#:tls-encode encode	 	 	 	 
  	 	port-no])
+
         
 The server-address is "smtp.gmail.com". The To and From fields are self
 explanatory. port is optional but google recommends 587. tls-encode is using 
