@@ -35,7 +35,7 @@ The most important thing here is gvector-map3, specifically the 3. There were tw
 
 The first version of the function was iterative, emptying a vector and creating a new one. I tested for the original vector being empty (using the make-gvector, which returns an empty vector), if yes, return the new vector. Otherwise, make the wanted modification to the current element of the original, and put it in the new vector. Then, remove said element from the original. Finally, iterate with both the modified vectors.
 
-This, obviously, isn't how map should work. I'll fix it step by step. First, let's stop it from emptying the original
+This, obviously, isn't how map should work. I'll fix it step by step. First, let's stop it from emptying the original.
 
 ```
 (define (gvector-map2 gvec op num)
