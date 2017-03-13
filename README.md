@@ -15,14 +15,16 @@ This part of code draws a circle.
 (define CIRCLE
   (circle 50 "solid" "black"))
 ```
-![circle](FP1/circle.png)
+![circle](/circle.png?raw=true "circle")
 
 This part of code draws a star.
 ```
 (define STAR
   (star 50 "solid" "gray"))
 ```
-![star](FP1/star.png)
+
+![star](/star.png?raw=true "star")
+
 Then I played with overlay and modified this ->
 ```
 (define (a-number digit)
@@ -37,7 +39,7 @@ to ->
      (text (number->string digit) 15 "white")
      (circle 15 "solid" "red")))
 ```
-![number-10](FP1/number-10.png)
+![number-10](/number-10.png?raw=true "number-10")
 
 The official website provides a code for drawing the phone dial plate.
 The function named place-all-numbers, which takes one shape? as parameter.
