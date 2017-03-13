@@ -12,7 +12,7 @@ For 2D plots, I first looked at a simple sin curve.  The code looks as folows:
  (plot (function sin (- pi) pi #:label "y = sin(x)")))
 ```
 and returns the folowing output:
-![sinPlot](2DPlot.png)
+![sinPlot](2Dplot.PNG)
 
 The function 'function' takes perameters:
 * function to graph
@@ -27,7 +27,7 @@ equations again after using haskell
   (plot (function (λ (x) (+ (* x x 2) 1)) (- 10) 10 #:label "y = 2x^2 + 1")))
 ```
 and got the following graph:
-![quadPlot](QuadPlot.png)
+![quadPlot](QuadPlot.PNG)
 
 Finally, I did the 3D plot of a sphere just to see how much of the sphere
 would appear, as most graphing programs cut it off before it can close:
@@ -40,7 +40,7 @@ would appear, as most graphing programs cut it off before it can close:
                      #:z-label "x^2 + y^2"))
 ```
 giving the result:
-![3DPlot](3DPlot.png)
+![3DPlot](3Dplot.PNG)
 
 which cuts the sphere off at z = 20
 
