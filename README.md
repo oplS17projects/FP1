@@ -55,9 +55,10 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: (library name here)
-My name: **put your real name here**
+## My Library: Plot
+My name: Scott Quinn
 
+I went through the first three sections of the Plot library and whenever there was some example code I typed it into racket to get a feel on the general graphing procedures. I started off with the first example of graphing a sine wave. 
 Write what you did!
 Remember that this report must include:
 
