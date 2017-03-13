@@ -4,7 +4,7 @@ DUE Sunday, March 12, 2017
 ## My Library: rackUnit
 My name: **Mike Zurawski**
 
-Having used other testing frameworks, I figured it would be cool to see how unit testing works in Racket.
+I figured it would be cool to see how unit testing works in Racket.
 So I checked out RackUnit!
 Similiar to other testing frameworks, RackUnit has the ability to create 'test suites'
 ```
