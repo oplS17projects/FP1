@@ -21,5 +21,4 @@ The code:
   (qr-code url (string-append filename ".png")))
 ```
 
-The resulting output:
 ![Duck Duck Go QR Code](ddg.png)
