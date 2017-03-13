@@ -50,12 +50,12 @@ library first and then used these functions to create some fun images.
 First part is the serpinski triangle. I created a base case triangle tri0 and then defined a function
 that takes a argument times and recursively draws a triangle on top of two triangles beside one another.
 
-![](images/Sierpinski.png?raw=true)
+![alt tag](https://github.com/sagishi/FP1/blob/master/Sierpinski.png)
 
 Then I played around with the scaling and flip function to create a function that given an image, generates
 it and it's shadow directly below(flip and scaled down vertically).
 
-![](images/shadow.png?raw=true)
+![alt tag](https://github.com/sagishi/FP1/blob/master/shadow.png)
 
 Lastly, I created 2 scenes, to get familar with place-image.
 scene1 puts serpinski 2 and it's shadow into an empty scene with gray background.
@@ -63,8 +63,8 @@ scene2 puts multiple plum-flower images into a rectange (could be replaced with 
 These could be helpful because empty-scenes can be used to build worlds in 2htdp universe. (Which
 will be an adventure for another day)
 
-![](images/scene1.png?raw=true)
-![](images/scene2.png?raw=true)
+![alt tag](https://github.com/sagishi/FP1/blob/master/scene1.png)
+![alt tag](https://github.com/sagishi/FP1/blob/master/scene2.png)
 
 
 <!-- Links -->
