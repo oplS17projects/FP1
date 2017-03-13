@@ -3,8 +3,8 @@
 (require 2htdp/image)
 (require 2htdp/universe)
 
-(define SCENE-WIDTH 500)
-(define SCENE-HEIGHT 500)
+(define SCENE-WIDTH 1000)
+(define SCENE-HEIGHT 800)
 (define BASE-RADIUS 10)
 (define RADIUS-DEVIATION 20)
 (define BASE-SPEED 2)
@@ -78,7 +78,7 @@
                        (set-x (+ x xVel))))
   ; moves the y-coordinate of the Ball by one tick according to the y-velocity of the ball
   (define (update-y) (begin
-                       (if (or (< (- (+ y yVel) radius) 0) (> (+ y yVel radius) SCENE-WIDTH)) (set-yVel (* -1 yVel)) 0)
+                       (if (or (< (- (+ y yVel) radius) 0) (> (+ y yVel radius) SCENE-HEIGHT)) (set-yVel (* -1 yVel)) 0)
                        (set-y (+ y yVel))))
   ; moves the ball by one tick
   (define (update) (begin (update-x) (update-y)))
@@ -98,7 +98,7 @@
       [(equal? m 'render) render]))
   dispatch)
 
-(define ballHouse (MakeBallHouse 500 500 20))
+(define ballHouse (MakeBallHouse SCENE-WIDTH SCENE-HEIGHT 20))
 
 ; the ticker function
 (big-bang 0 ; initial tick value (unused)
