@@ -28,6 +28,8 @@ The following code creates the first slide creates a function that keeps track o
    (bitmap (collection-file-path "PLT-206.png" "icons"))
    (colorize (bt "Welcome to OPL")  "blue"))
  ```
+ ![test image](/slide1.png?raw=true "test image")
+ 
 I learned that slide show can use a list or lists. Also, what is a presentation with out a side effects.  Side effect function can be used by using the fallowing ‘next and ‘alts. According to https://docs.racket-lang.org/slideshow/Creating_Slide_Presentations.html#%28mod-path._slideshow%2Fstart%29, 'next! element is like 'next, except that it is preserved when condensing.'alts~ element is like 'alts, except that it is not preserved when condensing.
 ```
   ;; slide 2
