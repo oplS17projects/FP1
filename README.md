@@ -15,14 +15,14 @@ This part of code draws a circle.
 (define CIRCLE
   (circle 50 "solid" "black"))
 ```
-![circle](circle.png)
+![circle](FP1/circle.png)
 
 This part of code draws a star.
 ```
 (define STAR
   (star 50 "solid" "gray"))
 ```
-![star](star.png)
+![star](FP1/star.png)
 Then I played with overlay and modified this ->
 ```
 (define (a-number digit)
@@ -37,18 +37,13 @@ to ->
      (text (number->string digit) 15 "white")
      (circle 15 "solid" "red")))
 ```
-![number-10](number-10.png)
+![number-10](FP1/number-10.png)
 
 The official website provides a code for drawing the phone dial plate.
 The function named place-all-numbers, which takes one shape? as parameter.
 It calls place-and-turn internally to put all small objects in a circle order.
 I made trivial modification to change it into another display, which does not serve the initial purpose but looks nice. 
 
-![place all numbers](place-all-numbers.png)
+![place all numbers](FP1/place-all-numbers.png)
 
-* output from your code demonstrating what it produced
-
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
 
