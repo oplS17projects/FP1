@@ -12,6 +12,8 @@ with a library like scapy in python, but it turned out not to be the case. After
 ```
 I spent a lot of time trying to adjust the server root with this to point to a custom index.html page, however without the required configuration files for the racket server the site cannot host anything.
 I ended up down a rabit hole in material I believed created by Lowell's very own Jay McCarthy:
-[Relavent Posting]:https://lists.racket-lang.org/users/archive/2013-September/059728.html
-[Racket Documentation]:https://docs.racket-lang.org/web-server/
-[Racket Documentation I could not follow]:https://docs.racket-lang.org/continue/
+![success](screenshot.png)
+<!-- Links -->
+[Relavent Posting]: https://lists.racket-lang.org/users/archive/2013-September/059728.html
+[Racket Documentation]: https://docs.racket-lang.org/web-server/
+[Racket Documentation I could not follow]: https://docs.racket-lang.org/continue/
