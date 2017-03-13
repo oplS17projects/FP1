@@ -14,7 +14,7 @@ My name: **Mike Zurawski**
 No output shows for tests that pass
 ```
 
-- Example using 'test-cases' which allow you to test multiple things. I one fails, the rest don't run.
+- Example using 'test-cases' which allow you to test multiple things. I one check fails, the rest don't run.
 ```
 (test-case
   "Group A - Test x feature"
