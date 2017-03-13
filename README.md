@@ -15,20 +15,20 @@ in my head instantly because I love to create and design websites! I followed th
 ****************** START OF CODE SAMPLE *****************************<br>
 <br>
 ```
- <p> #lang web-server/insta </p> <br>
-;;Library used to create the websites<br>
-<br>
+ #lang web-server/insta 
+;;Library used to create the websites
 
-(define (start request)<br>
-  ;;Sends a request to your web browser<br>
-  <br>
-  (response/xexpr<br>
-   ;;The request is picked up and opens something in the following format<br>
-   <br>
-   '(html<br>
-   <br>
-   ## Anything you wish to add to the page goes here! You will see more cool stuff in my full example of the code! ##<br>
-   )))<br>
+
+(define (start request)
+  ;;Sends a request to your web browser
+  
+  (response/xexpr
+   ;;The request is picked up and opens something in the following format
+   
+   '(html
+   
+   ## Anything you wish to add to the page goes here! You will see more cool stuff in my full example of the code! ##
+   )))
    ```
    <br>
    <br>
