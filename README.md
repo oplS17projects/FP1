@@ -15,7 +15,7 @@ This part of code draws a circle.
 (define CIRCLE
   (circle 50 "solid" "black"))
 ```
-![circle](/circle.png?raw=true "circle")
+![circle](https://raw.githubusercontent.com/xlzhen/FP1/master/circle.PNG)
 
 This part of code draws a star.
 ```
