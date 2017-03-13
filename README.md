@@ -31,35 +31,13 @@ The third block of code draws the star and and waits for an on-key event to chan
           (to-draw draw-star)
           (on-key change))
 ```           
+## Image outputs from code:
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+<img src="https://github.com/dannynguyen1/FP1/blob/master/Initial.png" width="200" height="200">
 
-The narrative itself should be no longer than 350 words. 
+<img src="https://github.com/dannynguyen1/FP1/blob/master/After%20pressing%20up%20arrow.png" width="200" height="200">
 
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![Initial](https://github.com/dannynguyen1/FP1/blob/master/Initial.png)
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+<img src="https://github.com/dannynguyen1/FP1/blob/master/After%20pressing%20down%20arrow.png" width="200" height="200">
 
 ## Project Schedule
 This is the first part of a larger project. The final project schedule is [here][schedule].
