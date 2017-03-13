@@ -2,18 +2,45 @@
 My name: Brett Lundy
 
 Write what you did!
-Remember that this report must include:
-
-
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
+For this assignment, I used the graphics/turtles library to play around with drawing objects to a window. One thing I did with this, that I saved, was to draw a simple square to the screen. I primarily used the draw, turn and move commands to manipulate were the turtle was and were it needed to draw to. My function looked like this: 
+```racket
+(define (draw_square_in_window)
+  (split (turn/radians (/ pi 2)))
+  (draw 50)
+  (home)
+  (turn/radians (/ pi 2))
+  (move 50)
+  (turn/radians (/ pi 2))
+  (turn/radians (/ pi 2))
+  (turn/radians (/ pi 2))
+  (move 50)
+  (turn/radians (/ pi 2))
+  (turn/radians (/ pi 2))
+  (split (turn/radians (/ pi 2)))
+  (draw 50)
+  (home)
+)
+```
+I also used the require graphics/turtle-examples library to try and draw a circle. I used the web to see how to draw a circle and found that somone had used this to draw the Olympics symbol using Python. Seeing this made me want to use Racket to do the same thing. I went about this by using a pre-defined function in the graphics/turtle-examples library to make a polygon. I turned the polygon into a circle like object by setting the amount of sides to an amount too large to see the edges, thus it took the form of a circle. The function looked like this:
+```racket
+(define (draw_olympics_symbol)
+  (move -150)
+  (regular-poly 100 50)
+  (move 150)
+  (regular-poly 100 50)
+  (move 150)
+  (regular-poly 100 50)
+  (home)
+  (move -150)
+  (turn/radians (- 0 (/ pi 2)))
+  (move 50)
+  (turn/radians (/ pi 2))
+  (move 75)
+  (regular-poly 100 50)
+  (move 150)
+  (regular-poly 100 50)
+  )
+```
 
 ![test image](/testimage.png?raw=true "test image")
 
