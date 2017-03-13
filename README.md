@@ -5,7 +5,7 @@ My original plan was to use the library "mode-lambda: the best 2D graphics of th
 
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
-![test image](/testimage.png?raw=true "test image")
+![code_sample](/code_sample.jpg?raw=true "sample of code")
 
 ```
 code?
