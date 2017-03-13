@@ -9,14 +9,16 @@
 ;Pythagorean Theorem
 (define (pyt a b)
   (+ (sqr a) (sqr b)))
-
+  
+;string to integer
 (define (stoi x)
   (string->number x))
 
+;integer to string
 (define (itos x)
   (number->string x))
 
-;defining a ouple of functions
+;defining a couple of functions
 (define A (matrix ([1 2]
                    [4 5])))
 (define B (matrix ([2 1]
