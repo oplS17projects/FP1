@@ -1,104 +1,93 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
-
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
-
-Please choose libraries that you think you might be interested in using in your final project.
-
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
-
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
-## My Library: (library name here)
-My name: **put your real name here**
-
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
-
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+## My Library: Racket Turtle
+My name: **Kevin Fossey**  
+For FP1 I decided to explore the [Racket Turtle](https://docs.racket-lang.org/racket_turtle/index.html) library. The library a racket version of general Turtle Graphics, which is defined on [Wikipedia](https://en.wikipedia.org/wiki/Turtle_graphics) as   
+>...vector graphics using a relative cursor (the "turtle") upon a Cartesian plane. [where] The turtle has three attributes: a location, an orientation (or direction), and a pen. The pen, too, has attributes: color, width, and on/off state.  
+  
+The Turtle is controlled with basic commands, like `(forward x)` which moves the turtle forward x, or `(turn-left x)` which turns the turtle to the left x degrees. The other attributes mentioned above are controlled with similar commands, like `(change-color "red")` to change the color, or `(change-pen-size x)` to change the size of the line to be drawn.
+  
+These commands change the attributes, but the `(draw x)` command does the actual drawing, where x is a list of commands for the turtle. I followed the examples in the Racket documentation, and created a simple set of procedures to allow a user to create and draw some basic shapes.
+  
+This is the code I came up with for creating and drawing a rectangle  
+```scheme  
+;list of turtle commands, which will produce a rectangle when called  
+(define (rectangle h w)  
+  (list (change-bg-color "black")  
+        (change-color "purple")  
+	(change-pen-size 5)  
+	(forward w)(turn-right 90)  
+	(forward h)(turn-right 90)  
+	(forward w)(turn-right 90)  
+	(forward h)))  
+;procedure to draw the rectangle   
+(define (draw-rect h w)  
+  (draw (rectangle h w)))  
+```  
+the rectangle procedure accepts two arguments, for length and width, and returns a list containing some pen attribute changes (changing background to black, pen to purple, line size to 5) and the turtle commands to create the rectangle of the specified dimensions.  
+So `(draw-rect 50 30)` produces  
+![Turtle Rectangle](/rect.png?raw=true "Trutle Rectangle")  
+  
+While the rectangle was a rigidly defined list, the documentation for this library gives some examples on how to implement recursion to create dynamic lists for shape creation.  
+  
+Following some of the examples in the documentation, I was able to come up with a very simple procedure to create an octagon using recursion.  
+```scheme
+;recursively produce a list of turtle commands to draw an octagon  
+(define (octagon l)  
+  (define (oct-builder l count)  
+    (if (<= count 0)  
+        empty  
+        (append (list (forward l)(turn-right 45))  
+                (oct-builder l (sub1 count)))))  
+  (oct-builder l 8))  
+;procedure to draw the octagon  
+(define (draw-oct l)  
+  (draw (list (change-bg-color "black")  
+              (change-color "purple")  
+              (change-pen-size 5)  
+              (octagon l))))  
+```  
+  
+  the `octagon` procedure uses recursion to build a list of commands, creating a new command to draw each side and then turn the turtle in preparation to draw its next side.  
+  
+so `(draw-oct 25)` produces  
+![Turtle Octagon](/oct.png?raw=true "Trutle Octagon")  
+  
+Getting more complicated, building off of `octagon` and the spiral example shown the racket documentation I came up with the following code  
+```scheme
+#lang racket  
+(require teachpacks/racket-turtle)  
+;creates a list of colors  
+(define MY-COLORS (list "blue" "purple" "yellow" "red" "green"))  
+  
+;define the sides of the octagon  
+(define (side s l d)  
+  (list (change-pen-size s)(forward l)(turn-left d)))  
+  
+;recursively produce a list of 'side' lists, which can be used to draw the octagon  
+(define (octagon s l d count)  
+  (if (<= count 0)  
+      empty  
+      (cons (side s l d)  
+            (octagon s l d (sub1 count)))))  
+;recursively produce a list of octagons, increasing the length of the sides each time  
+(define (tunnel s l d count)  
+  (if (<= count 0)  
+      empty  
+      (append (octagon s l d 8)  
+              (tunnel s (+ l 5) d (sub1 count)))))  
+  
+;this creates a list defining the entire shape  
+(define shell-image (list (go-to 450 225)          ;move the starting position over     
+                          (change-bg-color "black");changes the background color  
+                          (change-color MY-COLORS) ;progresses through the list of colors, changing each time  
+                          (tunnel 5 5 45 30)))     ;call tunnel to create the octagons  
+;draw the shape  
+(draw shell-image)  
+```  
+  
+Using the same concept of recusively building a list of commands, the `tunnel` procedure recursively builds a list of the `octagon` list's, changing the length of the sides each time through.  
+  
+so `(draw shell-image)` produces  
+![Turtle Tunnel](/tunnel.png?raw=true "Trutle Tunnel")  
+  
+This was a fun library to explore. Having never heard of turtle graphics, it was enjoyable yet challenging to figure out how the different commands could be utilized to create these shapes and patterns. It is understandable given the advancements in computer graphics, why turtle graphics isn't as prominent, but I understand the potential for this library in different applications.
 
