@@ -14,10 +14,11 @@ in my head instantly because I love to create and design websites! I followed th
 <br>
 ****************** START OF CODE SAMPLE *****************************<br>
 <br>
+```
  <p> #lang web-server/insta </p> <br>
 ;;Library used to create the websites<br>
 <br>
-```
+
 (define (start request)<br>
   ;;Sends a request to your web browser<br>
   <br>
