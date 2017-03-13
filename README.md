@@ -116,4 +116,4 @@ The if statement is necessary to ensure that using an empty string as either inp
 I then build this function into a little application using the GUI libary. While the input used has no spaces to show they
 are not necessary for the process to work, it still functions properly with spacing.
 
-![sample_output]/Exploration-output.PNG?raw=true "Sample Output")
+![sample_output](Exploration-output.PNG?raw=true "Sample Output")
