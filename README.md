@@ -113,7 +113,7 @@ appeared in a different string. The function is case-sensitive, but allows for a
 ```
 The if statement is necessary to ensure that using an empty string as either input would not cause an infinite loop.
 
-I then build this function into a little application using the GUI libary. While the input used has no spaces to show they
+I then built this function into a little application using the GUI libary. While the input used has no spaces to show they
 are not necessary for the process to work, it still functions properly with spacing.
 
 ![sample_output](Exploration-output.PNG?raw=true "Sample Output")
