@@ -24,9 +24,10 @@ The following code creates the first slide creates a function that keeps track o
   ;; slide 1
   (slide
    #:name "Title Slide"
-   (colorize(it "Hello World!") "red")
-   (bitmap (collection-file-path "PLT-206.png" "icons"))
-   (colorize (bt "Welcome to OPL")  "blue"))
+   (colorize(it "Hello World!")"red")
+   (size-in-pixels
+    (bitmap (collection-file-path "PLT-206.png" "icons")))
+   (colorize (bt "Welcome to OPL") "blue"))
  ```
  ![test image](/slide1.png?raw=true "test image")
  
