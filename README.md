@@ -1,91 +1,65 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
-
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
-
-Please choose libraries that you think you might be interested in using in your final project.
-
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
+Source code:
 ```racket
 #lang racket
 
-(require net/url)
+(require 2htdp/image)
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
+(define tri0
+(triangle 25 "solid" "black"))
 
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
+(define (serpinski n)
+(if (= 0 n)
+tri0
+(above (serpinski (- n 1))
+(beside (serpinski (- n 1))
+(serpinski (- n 1))))))
 
-You can still use these in your project, but you must explore different libraries for this assignment.
 
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
+(define (plum_flower color)
+(pulled-regular-polygon 30 5 1.3 140 100 color))
 
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
+(define (shadow image)
+(above image
+(scale/xy 1 0.5 (flip-vertical image)) ))
 
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
+(define scene1
+(place-image/align (shadow (serpinski 2)) 0 0 "left" "top" (empty-scene 100 150 "gray")))
 
-This file IS your report for the assignment, including code and your story.
+(define scene2
+(place-image
+(plum_flower "red") 120 30
+(place-image
+(plum_flower "purple") 124 80
+(place-image
+(plum_flower "slategray") 150 60
+(place-image
+(plum_flower "blue") 170 130
+(place-image
+(plum_flower "green") 150 100
+(rectangle 200 200 40 "red")))))))
 
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
 
-(require net/url)
+My Library: 2htdp/image
+My name: Jessica Lai
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
+I decided to play around with the 2htdp images library because no matter what I make for the final project,
+I will need some sort of display to make it interactive and visual.
 
-## My Library: (library name here)
-My name: **put your real name here**
+I played around with basic shape api's such as circle, square, and polygon to get a general feel of the 
+library first and then used these functions to create some fun images.
 
-Write what you did!
-Remember that this report must include:
+First part is the serpinski triangle. I created a base case triangle tri0 and then defined a function
+that takes a argument times and recursively draws a triangle on top of two triangles beside one another.
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+Then I played around with the scaling and flip function to create a function that given an image, generates
+it and it's shadow directly below(flip and scaled down vertically).
 
-The narrative itself should be no longer than 350 words. Yes, you need at least one image (output, diagrams). Images must be embedded into this md file. We should not have to click a link to see it. This is github, handling files is awesome and easy!
+Lastly, I created 2 scenes, to get familar with place-image.
+scene1 puts serpinski 2 and it's shadow into an empty scene with gray background.
+scene2 puts multiple plum-flower images into a rectange (could be replaced with empty scene).
+These could be helpful because empty-scenes can be used to build worlds in 2htdp universe. (Which
+will be an adventure for another day)
 
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
 
 <!-- Links -->
 [schedule]: https://github.com/oplS17projects/FP-Schedule
