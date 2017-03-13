@@ -1,31 +1,11 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
-
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
 ## My Library: rackUnit
 My name: **Mike Zurawski**
 
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
 Having used other testing frameworks, I figured it would be cool to see how unit testing works in Racket.
 So I checked out RackUnit!
-* highlights of code that you wrote, with explanation
 Similiar to other testing frameworks, RackUnit has the ability to create 'test suites'
 ```
 ;; Test Suites can be created for even more grouping. Can contain multiple test-cases.
@@ -40,7 +20,7 @@ Similiar to other testing frameworks, RackUnit has the ability to create 'test s
    "Test case 2"
    (check-eq? 'a 'a))) 'verbose)
 ```
-* output from your code demonstrating what it produced
+- Output
 ```
 Group A - Test x feature
 FAILURE
@@ -52,7 +32,6 @@ expression: (check-eq? 'a 'b)
 
 2 success(es) 0 failure(s) 0 error(s) 2 test(s) run
 ```
-* at least one diagram or figure showing your work
 RackUnit even provides a GUI for easy viewing of tests. 
 ```
 ;; Neat GUI feature if you want a more visual representation of test results
@@ -66,8 +45,6 @@ RackUnit even provides a GUI for easy viewing of tests.
    "Test case 2"
    (check-eq? 'a 'b))) #:wait? #f)
 ```
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
 ![image](/gui.png?raw=true "image")
 
