@@ -42,7 +42,7 @@ I also used the require graphics/turtle-examples library to try and draw a circl
   )
 ```
 
-![test image](/testimage.png?raw=true "test image")
+![test image](/square_image.jpeg?raw=true "Square Image")
 
 You must provide credit to the source for any borrowed images.
 
