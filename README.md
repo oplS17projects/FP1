@@ -1,14 +1,13 @@
 ## My Library: net/url, html-parsing, xml, ports(built in)
 My name: Ibrahim Mkusa
 
-Write what you did!
 
 I retrieved a web page via the net/url library. I then used html parsing to
 convert the raw html to an X-expression(SXML). I converted the x-expression to
 true xml via xml libraries xexpr-xml function. I then saved the xml of the page
 to a local file by opening another port and writing the xml via a funciton
-from the xml library. Html parsing was not included by default, and had to be
-installed via raco pkg tool
+from the xml library. html parsing was not included by default, and had to be
+installed via raco pkg tool.
 The code is short and fits here nicely. I left out the require statements.
 ```
 ..
