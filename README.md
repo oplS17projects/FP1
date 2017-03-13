@@ -3,7 +3,7 @@
 My name: Alexander Pilozzi
 
 I primarily explored the match-string library, which allows for pattern matching with strings.
-I also explored a bit of the GUI libary for the sake of having some other form of output.
+I also explored a bit of the GUI library for the sake of having some other form of output.
 
 The first thing I did was to briefly examine racket's native pattern-matching ability.
 ```racket
@@ -16,8 +16,10 @@ which outputs:
 '(6 34)
 ```
 as the input list fits the first pattern.
+
 The match-string features dealt primarily with allowing users to pattern match with the string-append and (list) append functions.
 For example, the following code:
+
 ```racket
 (define foo "this is a test and stuff")
 (define test1 "this")
@@ -44,7 +46,7 @@ outputs:
 ```
 showing that the first "t" seen by this method is the last one in the string.
 
-Use of the "and" and "or" procedures allows for different patterns to be tested in the same line of code, for example:
+Use of the "and" and "or" procedures allows for different patterns to be tested in the same line of code; for example:
 
 ```racket
 (match foo
@@ -65,7 +67,7 @@ outputs
 "thing"
 ```
 as both match the given pattern, but satisfy a different condition of the or statement.
-The methods listed for string-append also for for the list append function. The following code:
+The methods listed for string-append also work for the list append function. The following code:
 ```racket
 (define list1 (list 1 2 3 4 5 6))
 (define list2 (list 6 7 8 1 2 3))
