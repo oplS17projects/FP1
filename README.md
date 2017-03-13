@@ -7,6 +7,7 @@ regex used to find a video title:
 ```racket
 (define title-regex #px"[:alnum:]\"\\s\\stitle=\"[a-zA-Z 0-9.~|()!@#$%^&*+=\\-_'/]*")
 ```
+A title on YouTube is typically just numbers and letters, but many include a few of the symbols seen above.
 
 ![screen_shot](/screenshot.png?raw=true "screen shot")
 - YouTube Weekly Trending (https://www.youtube.com/feed/trending)
