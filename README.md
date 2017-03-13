@@ -1,104 +1,122 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
 
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
+## My Library: match-string
+My name: Alexander Pilozzi
 
-Please choose libraries that you think you might be interested in using in your final project.
+I primarily explored the match-string library, which allows for pattern matching with strings.
+I also explored a bit of the GUI library for the sake of having some other form of output.
 
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
+The first thing I did was to briefly examine racket's native pattern-matching ability.
 ```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
+(match '(6 34 6)
+  [(list x y x) (list x y)]
+  [(list x y z) (list z x y)])
 ```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
-
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
+which outputs:
+```racket
+'(6 34)
 ```
-#lang racket
+as the input list fits the first pattern.
 
-(require net/url)
+The match-string features dealt primarily with allowing users to pattern match with the string-append and (list) append functions.
+For example, the following code:
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
+```racket
+(define foo "this is a test and stuff")
+(define test1 "this")
+(match foo
+  [(string-append pre (== test1) post) post]
+  [_ 0])
+```
+outputs:
+```racket
+" is a test and stuff"
+```
+as it recognizes the string as a combination of "this" and " a test and stuff".
+"pre" and "post" are both variables that hold the portions of the string before and after the test string.
+
+While using pattern matching to search a given string is possible, it has the quirk of effectively searching from right to left, as:
+```racket
+(match foo
+  [(string-append pre "t" post) pre]
+  [_ 0])
+```
+outputs:
+```racket
+"this is a test and s"
+```
+showing that the first "t" seen by this method is the last one in the string.
+
+Use of the "and" and "or" procedures allows for different patterns to be tested in the same line of code; for example:
+
+```racket
+(match foo
+  [(string-append "this is a "(and x (or "test" "thing")) _..._) x])
+```
+outputs
+```racket
+"test"
+```
+whereas
+```racket
+(define bar "this is a thing and stuff")
+(match bar
+ [(string-append "this is a "(and x (or "test" "thing")) _..._) x]
+```
+outputs
+```racket
+"thing"
+```
+as both match the given pattern, but satisfy a different condition of the or statement.
+The methods listed for string-append also work for the list append function. The following code:
+```racket
+(define list1 (list 1 2 3 4 5 6))
+(define list2 (list 6 7 8 1 2 3))
+(define list3 (list 1 2 3 6 7 8))
+
+(match list1
+  [(append (list 1 2 3) x) x])
+
+(match list2
+  [(append x (list 1 2 3)) x])
+
+(match list3
+  {(append (list 1 2 3) (and x (or (list 4 5 6) (list 6 7 8)))) x})
+
+(match list1
+  {(append (list 1 2 3) (and x (or (list 4 5 6) (list 6 7 8)))) x})
+
+(match list1
+  [(append _ (list 3 4) _) #t]
+  [_ #f])
+
+(match list2
+  [(append _ (list 3 4) _) #t]
+  [_ #f])
+```
+outputs:
+```racket
+'(4 5 6)
+'(6 7 8)
+'(6 7 8)
+'(4 5 6)
+#t
+#f
 ```
 
-## My Library: (library name here)
-My name: **put your real name here**
+My final exploration of the string-match libary was to create a function that counted the number of times a given arbitrary string
+appeared in a different string. The function is case-sensitive, but allows for all characters and is defined as follows:
+```racket
+(define (number_of_appearances given toFind)
+  (define (string_locater_iter given toFind numFound)
+    (match given
+      [(string-append  pre (== toFind) post) (string_locater_iter pre toFind (add1 numFound))]
+      [_ numFound]))
+  (if (or (eq? given "") (eq? toFind "")) 0
+      (string_locater_iter given toFind 0)))
+```
+The if statement is necessary to ensure that using an empty string as either input would not cause an infinite loop.
 
-Write what you did!
-Remember that this report must include:
+I then built this function into a little application using the GUI libary. While the input used has no spaces to show they
+are not necessary for the process to work, it still functions properly with spacing.
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
-
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
-
+![sample_output](Exploration-output.PNG?raw=true "Sample Output")
