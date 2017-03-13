@@ -9,9 +9,7 @@ https://docs.racket-lang.org/plot/renderer2d.htm
 Write what you did!
 Remember that this report must include:
 
-For this assignment, I was interested of the library plot for graph plotting by Neil Toronto.
-The library provides a interface for producing all kinds of pots in 2D and 3D. The code was taken from one of his example. I modified one was the procedure which was the discrete-histogram and used it to show a graph of the exam 1 grade. The highlights of the code was made easy because of the library and procedure to create any form of graphs.
-The output of the diagrams came out like I wanted.
+For this assignment, I was interested of the library plot for graph plotting by Neil Toronto. The library provides a interface for producing all kinds of pots in 2D and 3D. The code was taken from one of his example. I modified one was the procedure which was the discrete-histogram and used it to show a graph of the exam 1 grade. The highlights of the code was made easy because of the library and procedure to create any form of graphs. By using this library, there is unlimited possbility of graphing and creating any form of displaying functions/math into a picture by using 2D/3D graphs by using plots. The output of the diagrams came out like I wanted.
 
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
