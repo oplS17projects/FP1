@@ -8,7 +8,7 @@ First I started to play around with simple procedures from this library, that al
 
 I decided to work with a Binomial Distribution, using a “real life” problem to illustrate it. Imagine that you are asked to toss a fair coin 5 times, and predict probability that you will get tails x times (where 0 < x <= 5). To create a Binomial Distribution object in racket, I needed two pieces of information. First how many times the coin was tossed (5 times) and the probability that it will result in tails in each trial (½ – head or tail). 
 
-Once I had this object I could figure out the standard deviation, mean  of this distribution. But, most importantly it created a pdf in the form of a list, which gave me the probability of each x – which would help answer the question from above. But, I though it would be neat if I could represent this distribution as a graph. So, I used the plot library to do so.
+Once I had this object I could figure out the standard deviation, mean  of this distribution. But, most importantly it created a pdf in the form of a list, which gave me the probability of each x – which would help answer the question from above. But, I thought it would be neat if I could represent this distribution as a graph. So, I used the plot library to do so.
 
 
 ```racket
@@ -19,7 +19,7 @@ Once I had this object I could figure out the standard deviation, mean  of this 
 ```
 ![plotimg](/plotimg.png?raw=true "plotimg")
 
-The last thing I did was a procedure that looks for the xth element in the pdf list; which would also answer the
+The last thing I did was a procedure that looks for the xth element in the pdf list; which would also answer the original question
 
 ```racket
 (define (find-prob-of-x lst x)
@@ -27,4 +27,5 @@ The last thing I did was a procedure that looks for the xth element in the pdf l
       (car lst)
       (find-prob-of-x (cdr lst) (- x 1))))
 ```
+![find_prob_of_x](/find_prob_of_x.png?raw=true "find_prob_of_x")
 
