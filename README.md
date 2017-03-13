@@ -8,7 +8,7 @@ My name: Joao Carlos Canto De Almeida
                       #:x-label "number of heads" #:y-label "probability"))
 ;; it uses the pdf files to build the discrete graph
 ```
-
+![plot-img](/plot-img.png?raw=true "plot-img")
 
 ![test image](/testimage.png?raw=true "test image")
 
