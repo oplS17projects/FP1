@@ -12,7 +12,7 @@ The first block defines the overlay of the star onto the empty-scene
 The second block of code takes user input "up-arrow" or "down-arrow"
 and alters the size of the star.
 
-The third block of code draws the star and 
+The third block of code draws the star and and waits for an on-key event to change the image.
 ```scheme
 #lang racket
 (require 2htdp/image)
