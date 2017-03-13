@@ -1,7 +1,8 @@
 ## My Library:  (require graphics/turtles) & (require graphics/turtle-examples)
 My name: Brett Lundy
 
-Write what you did!
+What I did:
+
 For this assignment, I used the graphics/turtles library to play around with drawing objects to a window. One thing I did with this, that I saved, was to draw a simple square to the screen. I primarily used the draw, turn and move commands to manipulate were the turtle was and were it needed to draw to. My function looked like this: 
 ```racket
 (define (draw_square_in_window)
@@ -22,7 +23,7 @@ For this assignment, I used the graphics/turtles library to play around with dra
 )
 ```
 ![test image](/square_image.jpg?raw=true "Square Image")
-I also used the require graphics/turtle-examples library to try and draw a circle. I used the web to see how to draw a circle and found that somone had used this to draw the Olympics symbol using Python. Seeing this made me want to use Racket to do the same thing. I went about this by using a pre-defined function in the graphics/turtle-examples library to make a polygon. I turned the polygon into a circle like object by setting the amount of sides to an amount too large to see the edges, thus it took the form of a circle. The function looked like this:
+I also used the require graphics/turtle-examples library to try and draw a circle. I used the web to see how to draw a circle and found that someone had used this to draw the Olympics symbol using Python. Seeing this made me want to use Racket to do the same thing. I went about this by using a pre-defined function in the graphics/turtle-examples library to make a polygon. I turned the polygon into a circle like object by setting the amount of sides to an amount too large to see the edges, thus it took the form of a circle. The function looked like this:
 ```racket
 (define (draw_olympics_symbol)
   (move -150)
@@ -44,13 +45,6 @@ I also used the require graphics/turtle-examples library to try and draw a circl
 ```
 
 ![test image](/olympic_symbol.jpg?raw=true "Olympic Symbol")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
 
 Ask questions publicly in the email group.
 
