@@ -36,15 +36,9 @@ This above is a trivial example; to complete this for the purposes of this assig
 You can still use these in your project, but you must explore different libraries for this assignment.
 
 #Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
+I'm still thinking....
 
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
 
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
 ```
 #lang racket
 
