@@ -16,6 +16,6 @@
           (regexp-replace clean-regex (car (regexp-match title-regex myport)) "")
           lst))))
   
-  (if (and (< n 25) (> n 1)) ;; youtube's "weekly trending" only displays 24 videos
+  (if (and (< n 25) (> n 0)) ;; youtube's "weekly trending" only displays 24 videos
       (run-loop n '())
       "can only display a maximum of 24 videos"))
