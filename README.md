@@ -37,7 +37,7 @@ tri0
 (place-image
 (plum_flower "green") 150 100
 (rectangle 200 200 40 "red")))))))
-'''
+```
 
 My Library: 2htdp/image
 My name: Jessica Lai
