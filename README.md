@@ -1,94 +1,43 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
+## My Library: (2htdp universe and image)
+My name: Danny Nguyen
 
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
+## What I did:
 
-Please choose libraries that you think you might be interested in using in your final project.
+After exploring through the list of libraries availiable I chose to go with the 2htdp universe and image libraries, which will make it possible to create an interactive game. During my free time I love to play video games, so my Inspiration for the idea behind this project came from that aspect of my life. I would like to create an old school fps game after exploring the libraries further. For this first assignment I made a world where users are able to influence the size of the given star by pressing the up and down arrow.
 
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
+## Simple code written while exploring:
+
+The first block defines the overlay of the star onto the empty-scene
+
+The second block of code takes user input "up-arrow" or "down-arrow"
+and alters the size of the star.
+
+The third block of code draws the star and and waits for an on-key event to change the image.
+```scheme
 #lang racket
+(require 2htdp/image)
+(require 2htdp/universe)
 
-(require net/url)
+(define (draw-star n)
+  (overlay (star n "solid" "red") (empty-scene 500 500)))
 
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
+(define (change w a-key)
+  (cond
+    [(key=? a-key "up")(+ w 10)]
+    [(key=? a-key "down")(- w 10)]
+    [else w]))
 
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
+(big-bang 50
+          (to-draw draw-star)
+          (on-key change))
+```           
+## Image outputs from code:
 
-You can still use these in your project, but you must explore different libraries for this assignment.
+<img src="https://github.com/dannynguyen1/FP1/blob/master/Initial.png" width="200" height="200">
 
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
+<img src="https://github.com/dannynguyen1/FP1/blob/master/After%20pressing%20up%20arrow.png" width="200" height="200">
 
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
-## My Library: (library name here)
-My name: **put your real name here**
-
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+<img src="https://github.com/dannynguyen1/FP1/blob/master/After%20pressing%20down%20arrow.png" width="200" height="200">
 
 ## Project Schedule
 This is the first part of a larger project. The final project schedule is [here][schedule].
