@@ -21,6 +21,7 @@ For this assignment, I used the graphics/turtles library to play around with dra
   (home)
 )
 ```
+![test image](/square_image.jpg?raw=true "Square Image")
 I also used the require graphics/turtle-examples library to try and draw a circle. I used the web to see how to draw a circle and found that somone had used this to draw the Olympics symbol using Python. Seeing this made me want to use Racket to do the same thing. I went about this by using a pre-defined function in the graphics/turtle-examples library to make a polygon. I turned the polygon into a circle like object by setting the amount of sides to an amount too large to see the edges, thus it took the form of a circle. The function looked like this:
 ```racket
 (define (draw_olympics_symbol)
@@ -42,7 +43,7 @@ I also used the require graphics/turtle-examples library to try and draw a circl
   )
 ```
 
-![test image](/square_image.jpg?raw=true "Square Image")
+![test image](/olympic_symbol.jpg?raw=true "Olympic Symbol")
 
 You must provide credit to the source for any borrowed images.
 
