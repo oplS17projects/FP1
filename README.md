@@ -40,4 +40,4 @@ The universe library is used to build it all into a runnable window, where I sim
 
 All of this produces the following (in a live view, he drifts across the screen from right to left):
 
-![test image](/testimage.png?raw=true "my output")
+![test image](/castaway.png?raw=true "my output")
