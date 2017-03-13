@@ -51,7 +51,7 @@ library first and then used these functions to create some fun images.
 First part is the serpinski triangle. I created a base case triangle tri0 and then defined a function
 that takes a argument times and recursively draws a triangle on top of two triangles beside one another.
 
-![test image](/Sierpinski.png?raw=true "sierpinski")
+![alt tag](https://github.com/sagishi/FP1/blob/master/Sierpinski.png)
 
 Then I played around with the scaling and flip function to create a function that given an image, generates
 it and it's shadow directly below(flip and scaled down vertically).
