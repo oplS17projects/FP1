@@ -41,6 +41,8 @@ The function named place-all-numbers, which takes one shape? as parameter.
 It calls place-and-turn internally to put all small objects in a circle order.
 I made trivial modification to change it into another display, which does not serve the initial purpose but looks nice. 
 
+![place-all-numbers](/place-all-numbers.jpg?raw=true "place all numbers")
+
 * output from your code demonstrating what it produced
 
 * at least one diagram or figure showing your work
