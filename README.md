@@ -23,11 +23,7 @@ I don't know what images I could include, as the primary output of my code is so
 
 
 
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
 
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
+![Screenshot of program output](/Screenshot_2017-03-12_22-15-30.png?raw=true "test image")
 
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
+Right now I have my code printing out a count and the frequency of the sound being played.
