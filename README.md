@@ -1,105 +1,74 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
-
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
-
-Please choose libraries that you think you might be interested in using in your final project.
-
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
-```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
-
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
-
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
 ## My Library: Plot
 My name: Scott Quinn
 
 I went through the first three sections of the Plot library and whenever there was some example code I typed it into racket to get a feel on the general graphing procedures. I started off with the first example of graphing a sine wave. 
-Write what you did!
-Remember that this report must include:
+```racket
+#lang racket
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+(require plot)
+(plot-new-window? #t)
+(plot (function sin (- pi) pi #:label "y = sin(x)"))
+```
+![sine](/sine.jpg?raw=true "sine")
 
-The narrative itself should be no longer than 350 words. 
 
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
+I didn't deviate into trying anything out for myself for a bit. Once I was confortable with the 2D graphing I tried to draw a circle using cartesian coordinates.
+```racket
+#lang racket
 
-![test image](/testimage.png?raw=true "test image")
+(require plot)
+(plot (list (axes)
+            (function (λ (x) (sqrt (- 100 (* x x)))))
+            (function (λ (x) (- (sqrt (- 100 (* x x)))))))
+      #:x-min -10 #:x-max 10
+      #:y-min -10 #:y-max 10)
+```
+![circle](/badcircle.jpg?raw=true "circle")
 
-You must provide credit to the source for any borrowed images.
+That was before I read about polar coordinates. I had the same result using the following:
+```racket
+#lang racket
 
-Code should be delivered in two ways:
+(require plot)
+(plot (polar (λ (theta) 10)))
+```
+After that I did some basic 3D plotting, like making a sphere
+```racket
+#lang racket
 
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
+(require plot)
+plot3d (polar3d (λ (theta rho) 1) #:color 2 #:line-style 'transparent)
+        #:altitude 25)
+```
+![ball](/ball.jpg?raw=true "ball")
 
-Ask questions publicly in the email group.
 
-## How to Prepare and Submit this assignment
+After getting used to 3D graphing I was thinking about some other cool graphs i could remember apart from the circle. I remembered hearing about a [Superformula][superformula] and that it could make cool graphs. So I tried to use it in racket.
+```racket
+#lang racket
 
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
+(require plot)
+(plot (polar (λ (theta) (expt (+ (abs (/ (cos (/ (* 88 theta) 4)) 1))
+                                 (abs (/ (sin (/ (* 64 theta) 4)) 1)))
+                              (- (/ 1 -20)))))
+```
+created
 
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
+
+![--208864](/--208864.jpg?raw=true "--208864")
+
+changing the 88 64 and 20 gives different pictures
+
+![346](/346.jpg?raw=true "346")
+
+![346-](/346.png?raw=true "346-")
+
+![-p2244](/-p2244.jpg?raw=true "-p2244")
+
+I thought it was neat and called it quits.
+
 
 <!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+
+[superformula]: https://en.wikipedia.org/wiki/Superformula
 
