@@ -5,15 +5,8 @@ I used the slideshow library to make a slideshow which showcases some of the fea
 
 Here is a piece of code which makes three slides, and shows how to add bullets with item and keys to switch slides.
 
+![code](/code.png?raw=true "code_image")
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+And here is showing what the code produces
 
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
+![show](/show.png?raw=true "show_image")
