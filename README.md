@@ -1,26 +1,9 @@
-`(require net/url)` or do in whole blocks:
-```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
 ## My Library: racket/plot
 My name: **Patrick Kyoyetera**
 
-Write what you did!
-Remember that this report must include:
+I chose to use racket/plot to learn out how to plot graphs graphs of information. The idea I have for my project might have to include plotting data in order to be able to visually represent it as useful information.
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-I chose to use racket/plot to find out how to plot graphs graphs of information. The idea I have for my project might have to include plotting data in order to be able to visually represent it as useful information.
+Here's an example of a snippet of code that plots the interval between negative pi and positive pi of functions passed inform of a list. I thought that if we're building a weather appliation, some information is more easily represented over a graph.
 
 ```
 #lang racket
@@ -34,7 +17,7 @@ I chose to use racket/plot to find out how to plot graphs graphs of information.
         #:x-min (- pi) #:x-max pi))
 ```
 
-The code block above calls the plot function with a list of two intervals to be illustrated with different colors. 
+The code block above calls the plot function to illustrate the area between the two intervals, and overlaps. The drawing is done in the order in which the functions are listed in so, the interval between the two sinm functions is drawn first then the sqareroot. 
 
 ![test image](/function-intervala.png?raw=true "Intervals between two 2D functions")
 
