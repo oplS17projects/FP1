@@ -1,104 +1,31 @@
-# Final Project Assignment 1: Exploration (FP1)
-DUE Sunday, March 12, 2017
 
-#Part 1: Get github
-If you don't have a github account, go get one. https://github.com/
-This whole assignment will be done and submitted via github, and you're already here!
- 
-#Part 2: Try a Library
-In this exercise, you will play with at least one library provided by the Racket developers. You will have the opportunity to explore another library later.
+## My Library: (math/statistics and plot)
+My name: Joao Carlos Canto De Almeida
 
-Please choose libraries that you think you might be interested in using in your final project.
+For this assignment, I have explored the math/statistics and plot library. 
 
-Start off at the Racket home page, http://racket-lang.org/, and then click on the Documentation link, taking you here: http://docs.racket-lang.org/.
- 
-There are lots of libraries. Play with one.
- 
-Your job is to explore one library and write up your results. Load the library and write some code to drive it around.
-For example, maybe you are interested in retrieving data from the web. If we look at the net/url library, we will find functions for creating URLs, issuing HTTP GET commands, and displaying the results. Here is a little bit of code for driving around a few of the functions in this library:
+First I started to play around with simple procedures from this library, that allowed me to do things such as find the mean, standard deviation, and variation of a list of reals. Then I began to think of ways that I could represent a real life problem using these tools. I found that I could represent discrete distributions using this library.  I was a little rusty on this subject, so I watched these two videos: https://www.youtube.com/watch?v=WWv0RUxDfbs and https://www.youtube.com/watch?v=NF0lrkqXIkQ. 
+
+I decided to work with a Binomial Distribution, using a “real life” problem to illustrate it. Imagine that you are asked to toss a fair coin 5 times, and predict probability that you will get tails x times (where 0 < x <= 5). To create a Binomial Distribution object in racket, I needed two pieces of information. First how many times the coin was tossed (5 times) and the probability that it will result in tails in each trial (½ – head or tail). 
+
+Once I had this object I could figure out the standard deviation, mean  of this distribution. But, most importantly it created a pdf in the form of a list, which gave me the probability of each x – which would help answer the question from above. But, I thought it would be neat if I could represent this distribution as a graph. So, I used the plot library to do so.
+
+
 ```racket
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
+(define plot-bd (plot (discrete-histogram
+         (map vector (build-list 6 values) (build-list 6 (distribution-pdf bd))))
+                      #:x-label "number of heads" #:y-label "probability"))
+;; it uses the pdf to build the discrete graph
 ```
-Notice that `(require net/url)` is all you need to put in your buffer in order to load the library and start using it.
-This above is a trivial example; to complete this for the purposes of this assignment (if you go down the path of pulling HTTP requests), you should use the parsing libraries to parse the HTML, JSON, or XML that is returned.
+![plotimg](/plotimg.png?raw=true "plotimg")
 
-### The following libraries are not allowed for project explorations:
-* games/cards
-* racket/gui
-* racket/draw 
+The last thing I did was a procedure that looks for the xth element in the pdf list; which would also answer the original question
 
-You can still use these in your project, but you must explore different libraries for this assignment.
-
-#Part 3: Write your Report
-Write your report right in this file. Instructions are below. Delete the instructions when you are done. Also delete all my explanation (this stuff), as I've already read it.
-
-You are allowed to change/delete anything in this file to make it into your report. It will be public, FYI.
-
-This file is formatted with the [**markdown** language][markdown], so take a glance at how that works.
-
-This file IS your report for the assignment, including code and your story.
-
-Code is super easy in markdown, which you can easily do inline `(require net/url)` or do in whole blocks:
+```racket
+(define (find-prob-of-x lst x)
+  (if (= x 0)
+      (car lst)
+      (find-prob-of-x (cdr lst) (- x 1))))
 ```
-#lang racket
-
-(require net/url)
-
-(define myurl (string->url "http://www.cs.uml.edu/"))
-(define myport (get-pure-port myurl))
-(display-pure-port myport)
-```
-
-## My Library: (library name here)
-My name: **put your real name here**
-
-Write what you did!
-Remember that this report must include:
-
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
-
-## How to Prepare and Submit this assignment
-
-1. To start, [**fork** this repository][forking]. 
-  2. (This assignment is just one README.md file, so you can edit it right in github)
-1. Modify the README.md file and [**commit**][ref-commit] changes to complete your report.
-1. Add your racket file to the repository. 
-1. Ensure your changes (report in md file, and added rkt file) are committed to your forked repository.
-1. [Create a **pull request**][pull-request] on the original repository to turn in the assignment.
-
-## Project Schedule
-This is the first part of a larger project. The final project schedule is [here][schedule].
-
-<!-- Links -->
-[schedule]: https://github.com/oplS17projects/FP-Schedule
-[markdown]: https://help.github.com/articles/markdown-basics/
-[forking]: https://guides.github.com/activities/forking/
-[ref-clone]: http://gitref.org/creating/#clone
-[ref-commit]: http://gitref.org/basic/#commit
-[ref-push]: http://gitref.org/remotes/#push
-[pull-request]: https://help.github.com/articles/creating-a-pull-request
+![find_prob_of_x](/find_prob_of_x.png?raw=true "find_prob_of_x")
 
