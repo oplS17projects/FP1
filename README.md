@@ -39,7 +39,8 @@ This code is able to create an oscillating sound while also allowing you to have
 (stop)
 ```
 The following code snippet is another way to create a sine-wave based sound 
-```(define signal
+```
+(define signal
   (network ()
            [a <= sine-wave 560]
            [out = (* 0.1 a)]))
