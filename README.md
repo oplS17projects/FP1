@@ -56,10 +56,12 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 ```
 
 ## My Library: (library name here)
-My name: **put your real name here**
+My name: Seokhwan Ko
 
 Write what you did!
 Remember that this report must include:
+
+
 
 * a narrative of what you did
 * highlights of code that you wrote, with explanation
