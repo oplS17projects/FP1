@@ -6,6 +6,7 @@ I used the net/url library to grab the weekly trending videos from YouTube. Regu
 regex used to find a video title:
 ```racket
 (define title-regex #px"[:alnum:]\"\\s\\stitle=\"[a-zA-Z 0-9.~|()!@#$%^&*+=\\-_'/]*")
+```
 
 ![screen_shot](/screenshot.png?raw=true "screen shot")
 - YouTube Weekly Trending (https://www.youtube.com/feed/trending)
