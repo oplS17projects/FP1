@@ -57,7 +57,7 @@ I got some help with these tests from the rsound library page on the racket-lang
 On top of what I tested rsound had the ability to do much more, for example it is also able to display the frequencies of the sound that are being played.
 
 The following is the output of my test file within the play ground for the program.
-
+```
 "played sound"
 #<procedure:stream-time>
 (rsound #<s16vector> 0 88200 44100)
@@ -66,7 +66,7 @@ The following is the output of my test file within the play ground for the progr
 "played sound"
 #<procedure:stream-time>
 #<procedure:stream-time>
-
+```
 
 ![rsound code and test](/rsound.png?raw=true "rsound code and test")
 
