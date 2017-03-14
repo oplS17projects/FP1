@@ -15,5 +15,6 @@ Code:
 
 ```
 Output:
+
 ![test image](/FP-Output.png ?raw=true "FP Output")
 
