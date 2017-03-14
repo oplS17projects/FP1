@@ -16,5 +16,5 @@ Code:
 ```
 Output:
 
-![FP-Output](/FP-Output.png ?raw=true "FP Output")
+![FP-Output](/FP-Output.png?raw=true "FP Output")
 
