@@ -25,10 +25,10 @@ I tried some libraries and I especially explored about '2htdp/image',
 and drew diverse kind of figures for testing.
 In this page, I uploaded Sierpinski triangle and Koch curve as test images.
 
-### Test image
+### Test image - (Sierpinski Triangle)
 ![test image](/sier.png?raw=true "test image")
 
-### Test Code (Sierpinski Triangle)
+### Test Code - (Sierpinski Triangle)
 ```
 #lang racket
 
@@ -40,10 +40,10 @@ In this page, I uploaded Sierpinski triangle and Koch curve as test images.
     (let ([t (sierpinski (- n 1))])
       (freeze (above t (beside t t))))))
 ```
-### Test image
+### Test image - (Koch Curve)
 ![test image](/koch.png?raw=true "test image")
 
-### Test Code (Koch Curve)
+### Test Code - (Koch Curve)
 ```
 (require 2htdp/image)
 
