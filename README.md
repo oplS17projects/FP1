@@ -72,9 +72,8 @@ This one will clears all rows from table 'ages' with age >= 0 ... so all rows
 ```
 
 
-![test image](/testimage.png?raw=true "test image")
+![output image](/project_fp1_output.png?raw=true "output image")
 
-Ask questions publicly in the email group.
 
 ## How to Prepare and Submit this assignment
 
