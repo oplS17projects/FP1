@@ -55,33 +55,29 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: (library name here)
+## My Library: '2htdp/image'
 My name: Seokhwan Ko
 
-Write what you did!
-Remember that this report must include:
+### Report
 
+I tried some libraries and I especially explored about '2htdp/image',
+and drew sierpinski triangle for testing.
 
+### Test image
+![test image](/sier.png?raw=true "test image")
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
+### Test Code
+```
+#lang racket
 
-The narrative itself should be no longer than 350 words. 
+(require 2htdp/image)
 
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
-![test image](/testimage.png?raw=true "test image")
-
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
+(let sierpinski ([n 5])
+  (if (zero? n)
+    (triangle 10 'solid 'green)
+    (let ([t (sierpinski (- n 1))])
+      (freeze (above t (beside t t))))))
+```
 
 ## How to Prepare and Submit this assignment
 
