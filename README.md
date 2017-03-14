@@ -1,5 +1,5 @@
 ## My Library: html-writing
-My name: Raphael Megali
+**My name:** Raphael Megali
 
 I used the html-writing library to create a simple webpage in HTML from Racket. 
 
