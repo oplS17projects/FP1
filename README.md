@@ -72,6 +72,9 @@ This one will clears all rows from table 'ages' with age >= 0 ... so all rows
 ```
 
 
+******** Output from running racket program **********
+
+
 ![output image](/project_fp1_output.png?raw=true "output image")
 
 
