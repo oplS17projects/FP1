@@ -6,14 +6,14 @@ Narrative: I played with a relatively simple library.  The libary 2htdp/image al
 Code Snipits: 
 ; self made null 
 ;(add-line image x1 y1 x2 y2 pen-or-color) → image?
-(define made-null (add-line (circle  30 'outline "red")0 0 60 60 "red"))
+`(define made-null (add-line (circle  30 'outline "red")0 0 60 60 "red"))
 
 ; not mine but looks awesome
-(define not-mine-complex1 (above
-   (beside (crop 40 40 40 40 (circle 40 "solid" "violet"))
-           (crop 0 40 40 40 (circle 40 "solid" "red")))
-   (beside (crop 40 0 40 40 (circle 40 "solid" "black"))
-           (crop 0 0 40 40 (circle 40 "solid" "green")))))
+'(define not-mine-complex1 (above
+   `(beside (crop 40 40 40 40 (circle 40 "solid" "violet"))
+           `(crop 0 40 40 40 (circle 40 "solid" "red")))
+   `(beside (crop 40 0 40 40 (circle 40 "solid" "black"))
+           `(crop 0 0 40 40 (circle 40 "solid" "green")))))
 * a narrative of what you did
 * highlights of code that you wrote, with explanation
 * output from your code demonstrating what it produced
