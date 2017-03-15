@@ -1,15 +1,15 @@
 # Final Project Assignment 1: Exploration (FP1)
 DUE Sunday, March 12, 2017
 
-#Part 1: Get github
+# Part 1: Get github
 I have my account!!
 
 
-#Part 2: Try a Library
+# Part 2: Try a Library
 I've played with several libraries; racket/gui, 2htdp/image, 2htdp/universe
 
 
-#Part 3: Write your Report
+# Part 3: Write your Report
 
 ## My Library: '2htdp/image'
 My name: Seokhwan Ko
