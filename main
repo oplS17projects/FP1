@@ -1,0 +1,12 @@
+#lang racket
+
+;;stock symbol lookup program
+;;https://finance.yahoo.com/lookup?s=
+;;http://money.cnn.com/quote/quote.html?symb=
+
+(require net/sendurl)
+
+
+(define my-string "http://money.cnn.com/quote/quote.html?symb=")
+(print "Enter a stock symbol in quotes")
+(send-url (string-append my-string (read))) 
