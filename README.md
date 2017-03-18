@@ -35,7 +35,8 @@ I explored the html-writing library and tzinfo libraries.  I used the tzinfo mos
 
 (close-output-port output)
 ```
-This code ended up producing this rather unappealing html document.
+The above code ended up producing this rather unappealing html document.
+
 ![output image](/output.png?raw=true "html image")
 
 
