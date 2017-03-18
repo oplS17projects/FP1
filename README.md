@@ -9,7 +9,7 @@ My initial thoughts are to do something related to stocks and alerts. I think I 
 
 I tested out some send-url commands and string commands. Maybe I can implemet displaying the data in racket itself by using some kind of a parser.
 
-![test image](/testimage.png?raw=true "test image")
+![test image](/test image.png?raw=true "test image")
 
 
 
