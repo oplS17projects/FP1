@@ -64,25 +64,11 @@ I used Racket's Package Manager to install the github-api package, but accidenta
 
 I then used the "require" line, as well as the example code. I had to go into the github api page to find out how to access the url for my github projects. I also had to unpack the github objects with a JSON parser, and structure accesses. My code produces data about the github for this project.
 
-* a narrative of what you did
-* highlights of code that you wrote, with explanation
-* output from your code demonstrating what it produced
-* at least one diagram or figure showing your work
-
-The narrative itself should be no longer than 350 words. 
-
-You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
-
+Shown below is the output for the program, but with the correct password instead of 8 asterisks.
 ![test image](/github_output.png?raw=true "test image")
 
-You must provide credit to the source for any borrowed images.
-
-Code should be delivered in two ways:
-
-1. Full files should be added to your version of this repository.
-1. Key excerpts of your code should be copied into this .md file, formatted to look like code, and explained.
-
-Ask questions publicly in the email group.
+This line of code does the heavy lifting.
+`(write-json (github-response-data (github "/repos/christianrdumas/FP1")))`
 
 ## How to Prepare and Submit this assignment
 
