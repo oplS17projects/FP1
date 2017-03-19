@@ -55,11 +55,14 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: (library name here)
-My name: **put your real name here**
+## My Library: github-api
+My name: **Christian Dumas**
 
-Write what you did!
-Remember that this report must include:
+I first looked through the list of libraries we could use. I saw the github api and that looked pretty fun to use.
+
+I used Racket's Package Manager to install the github-api package, but accidentally also installed the github package. I don't know what that does.
+
+I then used the "require" line, as well as the example code. I had to go into the github api page to find out how to access the url for my github projects. I also had to unpack the github objects with a JSON parser, and structure accesses. My code produces data about the github for this project.
 
 * a narrative of what you did
 * highlights of code that you wrote, with explanation
@@ -70,7 +73,7 @@ The narrative itself should be no longer than 350 words.
 
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
-![test image](/testimage.png?raw=true "test image")
+![test image](/github_output.png?raw=true "test image")
 
 You must provide credit to the source for any borrowed images.
 
