@@ -15,7 +15,7 @@ Using the 2htdp/image library I played around with the functions to produce a Bo
 ```
 This produced this:
 
-IMAGE HERE
+![test image](/testimage.png?raw=true "test image")
 
 Then I added six ellipses to form the three pedals for the clover on the logo. I figured if I positioned them right two ellipses could form a pedal. After playing with the positions for a long time I was able to get something that looked relatively similar. After that I used the scene+curve function to add a curve for the stem of the clover. Once again after playing with it for a little while I got it to look pretty good.
 The final result:
@@ -56,7 +56,7 @@ The final result:
    (rectangle 192 192 "solid" "darkgreen")))))))))
 ```
 
-IMAGE HERE
+![test image](/testimage.png?raw=true "test image")
 
 Remember that this report must include:
 
