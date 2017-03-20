@@ -19,5 +19,6 @@ Wind speeds up to 6.2 miles per hour
 ```
 
 Diagram of Library interaction:
-![test image](/Diagram.png?raw=true "test image")
+
+![Diagram](/Diagram.png?raw=true "test image")
 
