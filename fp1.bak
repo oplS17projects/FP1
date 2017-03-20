@@ -1,0 +1,4 @@
+#lang racket
+
+(struct ('password  data)
+    #:extra-constructor-name make-github-identity)
