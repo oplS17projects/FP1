@@ -55,9 +55,23 @@ Code is super easy in markdown, which you can easily do inline `(require net/url
 (display-pure-port myport)
 ```
 
-## My Library: (library name here)
-My name: **put your real name here**
+## My Library: json
+My name: Timothy Barber
 
+For FP1, I made an application that retreives the weather from the openweathermap.org web API and displayes it for the user.
+The user inputs the zip code they want for the city (US only). To read the user's input, I used the "read" method built into racket and then created the url `http://api.openweathermap.org/data/2.5/weather?zip=94040,us&APPID=1fce647522bdaea5dcce577570765ce5` where the zip was replaced by the user's input and the program will send that to the openweathermap API, and it will return the weather formatted in json. I used the json library, specifically the "read-json" method to turn the json into a 2-dmensional hashtable. The hashtable returned from the request was consistent in its usage of sections so I was able to reference the section of the hashtable and then the subsection of the element I wanted to display. For example, 
+`(define getWeather (car(hash-ref getJson 'weather)))` was used as a method to return the weather section, which contained the current description of the weather (aka "cloudy" or "sunny"). I then used the printf command to write `(printf "Todays forcast: ~a" (hash-ref getWeather 'description))`
+
+
+Output:
+`Weather app
+Please enter a zip code: 01520
+Todays forcast: clear sky
+Current Temp: 37.0 degrees F
+High Temp: 43.0 degrees F
+Low Temp: 32.0 degrees F
+
+Wind speeds up to 6.2 miles per hour`
 Write what you did!
 Remember that this report must include:
 
@@ -70,7 +84,7 @@ The narrative itself should be no longer than 350 words.
 
 You need at least one image (output, diagrams). Images must be uploaded to your repository, and then displayed with markdown in this file; like this:
 
-![test image](/testimage.png?raw=true "test image")
+![test image](/Diagram.png?raw=true "test image")
 
 You must provide credit to the source for any borrowed images.
 
