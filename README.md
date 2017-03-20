@@ -8,7 +8,7 @@ I didnt really do anything.
 I looked at the documentation for the plot library and copied an example from there. 
 I didn't start this in time to complete it as required.
 
-![test image](/testimage.png?raw=true "test image")
+![capture](/Capture.PNG?raw=true "Capture")
 
 
 
