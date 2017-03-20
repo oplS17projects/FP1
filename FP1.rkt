@@ -20,7 +20,7 @@
 
 (define websiteOut (get-pure-port (string->url webSiteString)))
 
-;;Reads the json from the website and converts it into a 2d hashtable
+;;Reads the json from the website and converts it into a 2d hash table
 (define getJson (read-json  websiteOut))
 ;;Converts Kelvin to Fahrenheit
 (define (kToF input) (round (-(* input (/ 9 5)) 459.67)))
@@ -31,8 +31,8 @@
 ;;Gets the wind hash table from the 2d has table
 (define getWind (hash-ref getJson 'wind))
 
-;;Use printf to print out the forcast
-(printf "\nTodays forcast: ~a" (hash-ref getWeather 'description))
+;;Use printf to print out the forecast
+(printf "\nTodays forecast: ~a" (hash-ref getWeather 'description))
 (printf "\nCurrent Temp: ~a degrees F" (kToF (hash-ref getMain 'temp)))
 (printf "\nHigh Temp: ~a degrees F" (kToF (hash-ref getMain 'temp_max)))
 (printf "\nLow Temp: ~a degrees F" (kToF (hash-ref getMain 'temp_min)))
